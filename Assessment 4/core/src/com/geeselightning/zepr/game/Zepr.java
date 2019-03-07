@@ -29,7 +29,7 @@ public class Zepr extends Game {
 	private GameScreen gameScreen;
 	private MiniGameScreen miniGameScreen;
 	
-	public static boolean devMode;
+	public static boolean devMode = true;
 
 	public final static int MENU = 0;
 	public final static int LOADING = 1;
@@ -43,7 +43,7 @@ public class Zepr extends Game {
 	// Assessment 3: added dev mode
 	public Zepr(boolean devMode) {
 		super();
-		Zepr.devMode = devMode;
+		Zepr.devMode = true;
 	}
 
 	/**

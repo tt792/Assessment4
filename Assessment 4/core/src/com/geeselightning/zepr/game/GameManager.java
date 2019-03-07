@@ -55,7 +55,7 @@ public class GameManager implements Disposable {
 	private boolean levelLoaded = false;
 
 	// The furthest level reached.
-	private int levelProgress = 0;
+	private int levelProgress = 10;
 
 	/* GameScreen display objects */
 	private OrthographicCamera gameCamera;
