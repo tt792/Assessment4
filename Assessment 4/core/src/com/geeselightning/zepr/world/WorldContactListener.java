@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.geeselightning.zepr.entities.BossZombie;
+import com.geeselightning.zepr.entities.Human;
 import com.geeselightning.zepr.entities.Player;
 import com.geeselightning.zepr.entities.PowerUp;
 import com.geeselightning.zepr.entities.Zombie;
@@ -36,6 +37,9 @@ public class WorldContactListener implements ContactListener {
 		case BOSSZOMBIE:
 			bossZombieContactBegun(fA, fBType, fB);
 			break;
+		case HUMAN:
+			humanContactBegun(fA, fBType, fB);
+			break;
 		case PLAYER:
 			playerContactBegun(fA, fBType, fB);
 			break;
@@ -44,6 +48,26 @@ public class WorldContactListener implements ContactListener {
 			break;
 		case MELEE_SENSOR:
 			meleeSensorContactBegun(fA, fBType, fB);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	/**
+	 * Called when a zombie comes into contact with a second fixture.
+	 * @param fA		the zombie body fixture
+	 * @param fBType	the type of the second fixture
+	 * @param fB		the second fixture
+	 */
+	public void humanContactBegun(Fixture fA, FixtureType fBType, Fixture fB) {
+		Human human = (Human) fA.getBody().getUserData();
+		switch(fBType) {
+		case PLAYER:
+			human.beginContact();
+			break;
+		case MELEE_SENSOR: //TODO: Create zombie attacking sensor
+			//((Player)fB.getBody().getUserData()).onMeleeRangeEntered(zombie);
 			break;
 		default:
 			break;
