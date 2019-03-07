@@ -40,8 +40,10 @@ public class ZombieSelectScreen extends DefaultScreen {
 	private boolean playerSet;
 	
 	private TextButton zombieLevel1;
+	private TextButton zombieLevel2;
 	
 	private final String zombieLevel1Descriptor = "You have awoken in an unknown location";
+	private final String zombieLevel2Descriptor = "You've managed to reach a second location";
 	
 	private GameManager gameManager;
 
@@ -68,7 +70,8 @@ public class ZombieSelectScreen extends DefaultScreen {
 		TextButton back = new TextButton("Back", skin);
 		
 		/* Level selection buttons */
-		zombieLevel1 = new TextButton("temp", skin);
+		zombieLevel1 = new TextButton("Level 1", skin);
+		zombieLevel2 = new TextButton("Level 2", skin);
 
 		/* Character selection buttons */
 		TextButton zombie = new TextButton("Zombie", skin);
@@ -117,6 +120,7 @@ public class ZombieSelectScreen extends DefaultScreen {
 
 		stageSelect.row().pad(50, 0, 100, 0);
 		stageSelect.add(zombieLevel1).pad(10);
+		stageSelect.add(zombieLevel2).pad(10);
 
 		stageSelect.row();
 		stageSelect.add(stageDescription).width(1000f).colspan(3);
@@ -217,7 +221,17 @@ public class ZombieSelectScreen extends DefaultScreen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				stageDescription.setText(zombieLevel1Descriptor);
-				gameManager.setLocation(Level.Location.TOWN);
+				gameManager.setLevelProgress(6);
+				gameManager.setLocation(Level.Location.ZOMBIE1);
+				levelSet = true;
+			}
+		});
+		zombieLevel2.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				stageDescription.setText(zombieLevel1Descriptor);
+				gameManager.setLevelProgress(7);
+				gameManager.setLocation(Level.Location.ZOMBIE2);
 				levelSet = true;
 			}
 		});

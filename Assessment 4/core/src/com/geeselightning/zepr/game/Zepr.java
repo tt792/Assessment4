@@ -29,21 +29,23 @@ public class Zepr extends Game {
 	private GameScreen gameScreen;
 	private MiniGameScreen miniGameScreen;
 	
-	public static boolean devMode = true;
-
+	public static boolean devMode;
+	public boolean isZombie = false;
+	
 	public final static int MENU = 0;
 	public final static int LOADING = 1;
 	public final static int ZOMBIESELECT = 2;
 	public final static int SELECT = 3;
 	public final static int GAME = 4;
 	public final static int ZOMBIE = 5;
-	public final static int LEVEL_COMPLETE = 6;
-	public final static int MINIGAME = 7;
+	public final static int ZOMBIE2 = 6;
+	public final static int LEVEL_COMPLETE = 7;
+	public final static int MINIGAME = 8;
 	
 	// Assessment 3: added dev mode
 	public Zepr(boolean devMode) {
 		super();
-		Zepr.devMode = true;
+		Zepr.devMode = devMode;
 	}
 
 	/**
@@ -56,6 +58,7 @@ public class Zepr extends Game {
 		
 		TextButton back = new TextButton("Back", skin);
 		TextButton zombieLevel = new TextButton("Continue", skin);
+		TextButton zombie2 = new TextButton("Continue", skin);
 		
 		back.addListener(new ChangeListener() {
 			@Override
@@ -71,6 +74,14 @@ public class Zepr extends Game {
 				dispose();
 			}
 		});
+		zombie2.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				changeScreen(ZOMBIESELECT);
+				dispose();
+			}
+		});
+		
 		
 		switch(screen) {
 			case MENU:
@@ -95,6 +106,9 @@ public class Zepr extends Game {
 				break;
 			case ZOMBIE:
 				this.setScreen(new TextScreen(this, "You passed out", "You awaken in an unknown location", zombieLevel));
+				break;
+			case ZOMBIE2:
+				this.setScreen(new TextScreen(this, "Level complete", "You have successfully completed the level", zombie2));
 				break;
 			case LEVEL_COMPLETE:
 				this.setScreen(new TextScreen(this, "Level complete", "You have successfully completed the level", back));

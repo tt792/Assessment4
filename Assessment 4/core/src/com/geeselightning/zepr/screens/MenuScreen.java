@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.geeselightning.zepr.game.GameManager;
 import com.geeselightning.zepr.game.Zepr;
 
 /**
@@ -70,7 +71,10 @@ public class MenuScreen extends DefaultScreen {
 		start.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				parent.changeScreen(Zepr.SELECT);
+				if(parent.isZombie)
+					parent.changeScreen(Zepr.ZOMBIESELECT);
+				else
+					parent.changeScreen(Zepr.SELECT);
 			}
 		});
 		

@@ -34,7 +34,9 @@ public class Level {
 		CENTRALHALL("Central Hall", "centralhallmap", 2),
 		COURTYARD("Courtyard", "courtyard", 3),
 		LIBRARY("Library", "library", 4),
-		RONCOOKE("Ron Cooke Hub", "roncooke", 5);
+		RONCOOKE("Ron Cooke Hub", "roncooke", 5),
+		ZOMBIE1("Level 1", "roncooke", 6),
+		ZOMBIE2("Level 2", "library", 7);
 		
 		// Human-readable level name
 		String name;
@@ -52,10 +54,6 @@ public class Level {
 		public int getNum() {
 			return num;
 		}
-	}
-	
-	public enum ZombieLocation {
-		
 	}
 	
 	/** The active {@link GameManager} instance. **/

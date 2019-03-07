@@ -55,7 +55,7 @@ public class GameManager implements Disposable {
 	private boolean levelLoaded = false;
 
 	// The furthest level reached.
-	private int levelProgress = 10;
+	private int levelProgress = 0;
 
 	/* GameScreen display objects */
 	private OrthographicCamera gameCamera;
@@ -116,6 +116,8 @@ public class GameManager implements Disposable {
 		waves.put(Level.Location.COURTYARD, new Wave[] { Wave.MEDIUM, Wave.LARGE, Wave.MEDIUM });
 		waves.put(Level.Location.LIBRARY, new Wave[] { Wave.SMALL, Wave.MEDIUM, Wave.MEDIUM });
 		waves.put(Level.Location.RONCOOKE, new Wave[] { Wave.LARGE, Wave.LARGE, Wave.BOSS });
+		waves.put(Level.Location.ZOMBIE1, new Wave[] { Wave.SMALL});
+		waves.put(Level.Location.ZOMBIE2, new Wave[] { Wave.SMALL});
 	}
 
 	/**
@@ -422,7 +424,10 @@ public class GameManager implements Disposable {
 		}
 		levelLoaded = false;
 		gameRunning = false;
-		parent.changeScreen(Zepr.LEVEL_COMPLETE);
+		if(levelProgress == 7)
+			parent.changeScreen(Zepr.ZOMBIE2);
+		else
+			parent.changeScreen(Zepr.LEVEL_COMPLETE);
 	}
 
 	/**

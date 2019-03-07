@@ -63,7 +63,6 @@ public class Player extends Character {
 	private Type type;
 
 	private boolean attacking;
-	private boolean zombie;
 	
 	private int hitRange = Constant.PLAYERRANGE;
 	private float hitCooldown = Constant.PLAYERHITCOOLDOWN;
@@ -92,7 +91,6 @@ public class Player extends Character {
 		this.speed = (int) (Constant.PLAYERSPEED * type.speedMultiplier);
 		this.health = (int) (Constant.PLAYERMAXHP * type.healthMultiplier);
 
-		zombie = false;
 		mainTexture = new Texture(type.normalTextureName);
 		attackTexture = new Texture(type.attackTextureName);
 		this.sprite.setTexture(mainTexture);
@@ -190,7 +188,7 @@ public class Player extends Character {
 			return;
 		} else {
 			if (health - damage >= 0) {
-				if(!zombie ) {
+				if(!parent.isZombie) {
 					if(hitsTaken >= Constant.PLAYERTURNHITS) {
 						double turnRoll = Math.random();
 						
@@ -210,7 +208,7 @@ public class Player extends Character {
 	
 	public void TurnToZombie() {
 		levelToReturn = GameManager.instance.getLevel();
-		zombie = true;
+		parent.isZombie = true;
 		parent.changeScreen(Zepr.ZOMBIE);
 	}
 

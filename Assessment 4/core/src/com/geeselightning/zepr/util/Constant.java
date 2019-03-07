@@ -21,7 +21,7 @@ public final class Constant {
 	public static final Vector2 ORIGIN = new Vector2(0, 0);
 	public static final float PLAYERSPEED = 6;
 	public static final int PLAYERMAXHP = 100;
-	public static final int PLAYERDMG = 10000;//20;
+	public static final int PLAYERDMG = 100000;//20;
 	public static final int PLAYERRANGE = 50;
 	public static final float PLAYERHITCOOLDOWN = 0.2f;
 	public static final int PLAYERTURNHITS = 4; //Number of hits before player has a chance to turn
