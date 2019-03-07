@@ -12,6 +12,7 @@ public enum FixtureType {
 	ZOMBIE,
 	BOSSZOMBIE,
 	POWERUP,
-	MELEE_SENSOR
+	MELEE_SENSOR, 
+	HUMAN
 
 }
