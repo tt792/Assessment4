@@ -24,6 +24,8 @@ public final class Constant {
 	public static final int PLAYERDMG = 20;
 	public static final int PLAYERRANGE = 50;
 	public static final float PLAYERHITCOOLDOWN = 0.2f;
+	public static final int PLAYERTURNHITS = 4; //Number of hits before player has a chance to turn
+	public static final double PLAYERTURNCHANCE = 1; //Chance of the player to turn when hit
 
 	public static final float ZOMBIESPEED = 4;
 	public static final int ZOMBIEMAXHP = 100;

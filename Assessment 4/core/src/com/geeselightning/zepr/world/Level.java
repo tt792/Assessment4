@@ -54,6 +54,10 @@ public class Level {
 		}
 	}
 	
+	public enum ZombieLocation {
+		
+	}
+	
 	/** The active {@link GameManager} instance. **/
 	private GameManager gameManager;
 	

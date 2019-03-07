@@ -12,11 +12,14 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.geeselightning.zepr.game.GameManager;
 import com.geeselightning.zepr.game.Zepr;
 import com.geeselightning.zepr.util.Constant;
 import com.geeselightning.zepr.world.BodyFactory;
 import com.geeselightning.zepr.world.FixtureType;
+import com.geeselightning.zepr.world.Level;
 import com.geeselightning.zepr.world.WorldContactListener;
+import com.geeselightning.zepr.world.Level.Location;
 
 /**
  * Represents the player-controlled character. <br/>
@@ -55,14 +58,19 @@ public class Player extends Character {
 		}
 	}
 
+	public Level levelToReturn;
+	
 	private Type type;
 
 	private boolean attacking;
-
+	private boolean zombie;
+	
 	private int hitRange = Constant.PLAYERRANGE;
 	private float hitCooldown = Constant.PLAYERHITCOOLDOWN;
 	private Texture mainTexture;
 	private Texture attackTexture;
+	
+	private int hitsTaken;
 
 	/**
 	 * Contains the zombies currently in range and in front of the player that will
@@ -84,6 +92,7 @@ public class Player extends Character {
 		this.speed = (int) (Constant.PLAYERSPEED * type.speedMultiplier);
 		this.health = (int) (Constant.PLAYERMAXHP * type.healthMultiplier);
 
+		zombie = false;
 		mainTexture = new Texture(type.normalTextureName);
 		attackTexture = new Texture(type.attackTextureName);
 		this.sprite.setTexture(mainTexture);
@@ -181,11 +190,28 @@ public class Player extends Character {
 			return;
 		} else {
 			if (health - damage >= 0) {
+				if(!zombie ) {
+					if(hitsTaken >= Constant.PLAYERTURNHITS) {
+						double turnRoll = Math.random();
+						
+						if (turnRoll <= Constant.PLAYERTURNCHANCE) {
+							TurnToZombie();
+						}
+					}
+					hitsTaken++;
+				}
+				
 				health -= damage;
 			} else {
 				health = 0;
 			}
 		}
+	}
+	
+	public void TurnToZombie() {
+		levelToReturn = GameManager.instance.getLevel();
+		zombie = true;
+		parent.changeScreen(Zepr.ZOMBIE);
 	}
 
 	// Assessment 3: added defineBody() method required for box2d integration.

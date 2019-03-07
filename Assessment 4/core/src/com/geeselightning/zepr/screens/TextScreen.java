@@ -3,6 +3,7 @@ package com.geeselightning.zepr.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -27,15 +28,17 @@ public class TextScreen extends DefaultScreen {
 	private Label subtitleText;
 	private Zepr parent;
 	private Stage stage;
+	private TextButton button;
 	private Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 
-	public TextScreen(Zepr parent, String title, String subtitle) {
+	public TextScreen(Zepr parent, String title, String subtitle, TextButton button) {
 		super(parent);
 
 		this.parent = parent;
 		
 		titleText = new Label(title, skin);
 		subtitleText = new Label(subtitle, skin);
+		this.button = button;
 
 		// The stage is the controller which will react to inputs from the user.
 		this.stage = new Stage(new ScreenViewport());
@@ -53,23 +56,12 @@ public class TextScreen extends DefaultScreen {
 		table.setFillParent(true);
 		stage.addActor(table);
 		table.center();
-
-		TextButton back = new TextButton("Back", skin);
-
+		
 		// Adding content to the table (screen).
 		table.add(titleText);
 		table.row().pad(30);
 		table.add(subtitleText).row();
-		table.add(back);
-
-		// Defining actions for the preferences button.
-		back.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				parent.changeScreen(Zepr.SELECT);
-				dispose();
-			}
-		});
+		table.add(button);
 	}
 
 	@Override
