@@ -55,8 +55,8 @@ public class WorldContactListener implements ContactListener {
 	}
 	
 	/**
-	 * Called when a zombie comes into contact with a second fixture.
-	 * @param fA		the zombie body fixture
+	 * Called when a human comes into contact with a second fixture.
+	 * @param fA		the human body fixture
 	 * @param fBType	the type of the second fixture
 	 * @param fB		the second fixture
 	 */
@@ -67,7 +67,7 @@ public class WorldContactListener implements ContactListener {
 			human.beginContact();
 			break;
 		case MELEE_SENSOR: //TODO: Create zombie attacking sensor
-			//((Player)fB.getBody().getUserData()).onMeleeRangeEntered(zombie);
+			((Zombie)fB.getBody().getUserData()).beginContact();
 			break;
 		default:
 			break;

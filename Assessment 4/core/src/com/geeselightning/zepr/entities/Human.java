@@ -1,5 +1,7 @@
 package com.geeselightning.zepr.entities;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -10,6 +12,9 @@ import com.geeselightning.zepr.game.Zepr;
 import com.geeselightning.zepr.util.Constant;
 import com.geeselightning.zepr.world.FixtureType;
 
+/**
+ * A human computer-controlled character that will persue zombies and attempt to attack zombies
+ */
 public class Human extends Character{
 	
 	private final float hitCooldown = Constant.HUMANHITCOOLDOWN;
@@ -24,13 +29,14 @@ public class Human extends Character{
 	public float stunTimer;
 	
 	public Human(Zepr parent, float bRadius, Vector2 initialPos, float initialRot) {
-		super(parent, new Sprite(new Texture("HumanSprite.png")), bRadius, initialPos, initialRot);
-		
+		super(parent, new Sprite(new Texture("player03.png")), bRadius, initialPos, initialRot);
+		this.speed = (int) speedMulti;
+		this.health = (int) healthMulti;
+		this.attackDamage = (int) damageMulti;
 	}
 
 	@Override
 	public void defineBody() {
-		// TODO Auto-generated method stub
 		BodyDef bDef = new BodyDef();
 		bDef.type = BodyDef.BodyType.DynamicBody;
 		bDef.position.set(initialPos);
@@ -63,7 +69,7 @@ public class Human extends Character{
 		/*
 		 * need to get list of the zombies here
 		 */
-		Zombie zombie = new Zombie(parent, delta, initialPos, delta, null); //change to be a reference to the closest zombie to this human
+		Zombie zombie = closestZombie();
 		Vector2 zombieVector = getVectorTo(zombie);
 		b2body.applyLinearImpulse(zombieVector.nor().scl(speedMulti), getPos(), true);
 		
@@ -104,6 +110,24 @@ public class Human extends Character{
 			health = 0;
 			this.alive = false;
 		}
+	}
+	
+	/**
+	 * Function to return the closest zombie to this human
+	 */
+	private Zombie closestZombie() {
+		ArrayList<Zombie> zombieList = gameManager.getZombies();
+		Zombie closestZombie = zombieList.get(0);
+		for (Zombie zombie : zombieList) {
+			if (zombie != closestZombie) {
+				double temp1 = distanceFrom(closestZombie);
+				double temp2 = distanceFrom(zombie);
+				if (temp2 > temp1) {
+					closestZombie = zombie;
+				}
+			}
+		}
+		return closestZombie;	
 	}
 
 }

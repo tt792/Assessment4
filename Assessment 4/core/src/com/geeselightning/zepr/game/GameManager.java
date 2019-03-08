@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.geeselightning.zepr.KeyboardController;
 import com.geeselightning.zepr.entities.BossZombie;
 import com.geeselightning.zepr.entities.Entity;
+import com.geeselightning.zepr.entities.Human;
 import com.geeselightning.zepr.entities.Player;
 import com.geeselightning.zepr.entities.PowerUp;
 import com.geeselightning.zepr.entities.Zombie;
@@ -94,6 +95,16 @@ public class GameManager implements Disposable {
 	private ArrayList<Entity> entities;
 	// All the active zombies.
 	private ArrayList<Zombie> zombies;
+	public ArrayList<Zombie> getZombies() {
+		return zombies;
+	}
+	
+	//all active humans
+	private ArrayList<Human> humans;
+	public ArrayList<Human> getHumans(){
+		return humans;
+	}
+	
 	// All the active power-ups.
 	private ArrayList<PowerUp> powerUps;
 
@@ -227,6 +238,16 @@ public class GameManager implements Disposable {
 
 	public void removeEntity(Entity entity) {
 		this.entities.remove(entity);
+	}	
+	
+	public void addHuman(Human human) {
+		this.humans.add(human);
+		this.entities.add(human);
+	}	
+	
+	public void removeHuman(Human human) {
+		this.humans.remove(human);
+		this.entities.remove(human);
 	}
 
 	public void addZombie(Zombie zombie) {
@@ -293,6 +314,7 @@ public class GameManager implements Disposable {
 		// Instantiates entity lists.
 		this.entities = new ArrayList<>();
 		this.zombies = new ArrayList<>();
+		this.humans = new ArrayList<>();
 		this.powerUps = new ArrayList<>();
 
 		spawnPlayer();
@@ -348,7 +370,13 @@ public class GameManager implements Disposable {
 		hud.setProgressLabel(waveProgress + 1, zombiesToSpawn);
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
-
+		//testing humans being added
+		for (int i = 0; i < 1; i++) {
+			Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
+			human.defineBody();
+			addHuman(human);
+		}
+		//ending testing of humans
 		if (waveProgress > 0) {
 			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, randomPowerUpType.getRandom());
 			powerUp.defineBody();
@@ -447,6 +475,7 @@ public class GameManager implements Disposable {
 			entities.forEach(e -> e.delete());
 			this.entities.clear();
 			this.zombies.clear();
+			this.humans.clear();
 			this.powerUps.clear();
 			spawnPlayer();
 			loadWave();
@@ -474,6 +503,7 @@ public class GameManager implements Disposable {
 		if (zombiesToSpawn > 0) {
 			spawnZombies(delta);
 		}
+		
 
 		// Removes dead entities from the world.
 		List<Entity> deadEntities = entities.stream().filter(e -> (!e.isAlive() && !(e instanceof Player)))
