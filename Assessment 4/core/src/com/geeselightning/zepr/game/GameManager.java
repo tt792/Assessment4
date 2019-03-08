@@ -45,6 +45,8 @@ public class GameManager implements Disposable {
 	private final Zepr parent;
 	// The instance of GameManager used by the game.
 	public static GameManager instance;
+	
+	public boolean cureFound = false;
 
 	// The preferences file that holds save data.
 	private Preferences prefs;
@@ -303,6 +305,11 @@ public class GameManager implements Disposable {
 		waveProgress = 0;
 
 		levelLoaded = true;
+		
+		if(levelProgress == 11) {
+			PowerUp powerUp = new PowerUp(parent, 0.2f, new Vector2(level.getPlayerSpawn().x + 10.f, level.getPlayerSpawn().y + 10.f), 0, PowerUp.Type.STORYCURE);
+			addPowerUp(powerUp);
+		}
 
 		loadWave();
 
@@ -424,12 +431,18 @@ public class GameManager implements Disposable {
 		}
 		levelLoaded = false;
 		gameRunning = false;
-		if(levelProgress == 7)
+		if(levelProgress == 11)
 			parent.changeScreen(Zepr.ZOMBIE2);
 		else
 			parent.changeScreen(Zepr.LEVEL_COMPLETE);
 	}
 
+	void returnToNormalGame() {
+		setLevelProgress(player.levelToReturn);
+		player.SetHitsTaken(0);
+		parent.changeScreen(Zepr.ZOMBIE3);
+	}
+	
 	/**
 	 * Runs update logic for each entity, processes player input and updates the camera.
 	 * @param delta	the seconds since the last update cycle
@@ -453,7 +466,12 @@ public class GameManager implements Disposable {
 		}
 
 		// Check if the wave has been completed
-		if (zombies.size() + zombiesToSpawn == 0 && !activeBoss) {
+		if (levelProgress == 11) {
+			if (cureFound) {
+				returnToNormalGame();
+			}
+		}
+		else if (zombies.size() + zombiesToSpawn == 0 && !activeBoss) {
 			waveComplete();
 		}
 		
