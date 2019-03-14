@@ -57,5 +57,6 @@ public final class Constant {
 	public static final float IMMUNITYTIME = 5;
 	public static final float ATKUPTIME = 10;
 	public static final float RPDFIRETIME = 10;
+	public static final double CURERANGE = 10;
 	
 }

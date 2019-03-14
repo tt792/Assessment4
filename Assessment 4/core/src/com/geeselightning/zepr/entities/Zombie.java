@@ -41,6 +41,8 @@ public class Zombie extends Character {
 		
 	}
 
+	public boolean turned = false;
+	
 	private final float hitCooldown = Constant.ZOMBIEHITCOOLDOWN;
 	private float healthMulti;
 	private float speedMulti;
@@ -121,6 +123,7 @@ public class Zombie extends Character {
 	@Override
 	public void update(float delta) {
 		super.update(delta);
+		
 		
 		if (stunTimer > 0) {
 			stunTimer -= delta;

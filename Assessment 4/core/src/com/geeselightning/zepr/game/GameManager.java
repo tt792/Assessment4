@@ -2,11 +2,13 @@ package com.geeselightning.zepr.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -388,7 +390,7 @@ public class GameManager implements Disposable {
 		}
 		//ending testing of humans
 		if (waveProgress > 0) {
-			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, randomPowerUpType.getRandom());
+			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, /*randomPowerUpType.getRandom()*/PowerUp.Type.CURE);
 			powerUp.defineBody();
 			addPowerUp(powerUp);
 		}
@@ -509,6 +511,10 @@ public class GameManager implements Disposable {
 			spawnPlayer();
 			loadWave();
 		}
+		
+		if (player.hasCure && Gdx.input.isKeyPressed(Input.Keys.E)) {
+			cure();
+		}
 
 		// Check if the wave has been completed
 		if (levelProgress == 11) {
@@ -573,6 +579,19 @@ public class GameManager implements Disposable {
 		world.step(1 / 60f, 6, 2);
 	}
 
+	public void cure() {
+		for (Iterator<Zombie> zl = getZombies().iterator(); zl.hasNext(); ) {
+			Zombie zombie = zl.next();
+			double distance = player.distanceFrom(zombie);
+			if (distance <= Constant.CURERANGE) {
+				Human human = new Human(parent, 0.3f, zombie.getPos(), 0);
+				human.defineBody();
+				addHuman(human);
+				zombie.takeDamage(1000);
+			}
+		}
+	}
+	
 	/**
 	 * Retrieves user input from the {@link InputProcessor} and moves the player
 	 * character accordingly.
