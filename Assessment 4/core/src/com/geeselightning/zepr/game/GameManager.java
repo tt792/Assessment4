@@ -308,6 +308,7 @@ public class GameManager implements Disposable {
 		
 		if(levelProgress == 11) {
 			PowerUp powerUp = new PowerUp(parent, 0.2f, new Vector2(level.getPlayerSpawn().x + 10.f, level.getPlayerSpawn().y + 10.f), 0, PowerUp.Type.STORYCURE);
+			powerUp.defineBody();
 			addPowerUp(powerUp);
 		}
 
