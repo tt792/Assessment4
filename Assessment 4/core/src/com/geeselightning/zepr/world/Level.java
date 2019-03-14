@@ -35,8 +35,8 @@ public class Level {
 		COURTYARD("Courtyard", "courtyard", 3),
 		LIBRARY("Library", "library", 4),
 		RONCOOKE("Ron Cooke Hub", "roncooke", 5),
-		ZOMBIE1("Level 1", "roncooke", 6),
-		ZOMBIE2("Level 2", "library", 7);
+		ZOMBIE1("Level 1", "roncooke", 10),
+		ZOMBIE2("Level 2", "library", 11);
 		
 		// Human-readable level name
 		String name;
