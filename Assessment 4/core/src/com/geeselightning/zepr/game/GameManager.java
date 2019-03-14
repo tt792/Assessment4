@@ -379,10 +379,12 @@ public class GameManager implements Disposable {
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
 		//testing humans being added
-		for (int i = 0; i < 1; i++) {
-			Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
-			human.defineBody();
-			addHuman(human);
+		if(levelProgress < 9) {
+			for (int i = 0; i < 1; i++) {
+				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
+				human.defineBody();
+				addHuman(human);
+			}
 		}
 		//ending testing of humans
 		if (waveProgress > 0) {
