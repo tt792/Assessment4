@@ -40,7 +40,8 @@ public class Player extends Character {
 
 		NERDY("player01.png", "player01_attack.png", 1.5f, 1.0f, 1.0f),
 		SPORTY("player02.png", "player02_attack.png", 1.0f, 1.0f, 1.5f),
-		HEAVY("player03.png", "player03_attack.png", 1.0f, 1.5f, 1.0f);
+		HEAVY("player03.png", "player03_attack.png", 1.0f, 1.5f, 1.0f),
+		ZOMBIE("zombie01.png", "zombie01.png", 1.25f, 1.25f, 1.25f);
 
 		String normalTextureName;
 		String attackTextureName;

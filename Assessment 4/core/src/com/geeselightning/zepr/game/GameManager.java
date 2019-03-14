@@ -424,13 +424,25 @@ public class GameManager implements Disposable {
 	public void spawnZombies(float delta) {
 		if (spawnCooldown <= 0) {
 			List<Vector2> zombieSpawns = level.getZombieSpawns();
-			zombieSpawns.forEach(sp -> {
-				Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
-						randomZombieType.getRandom());
-				zombie.defineBody();
-				addZombie(zombie);
-				zombiesToSpawn -= 1;
-			});
+			
+			if(getLevelProgress() > 9) {
+				zombieSpawns.forEach(sp -> {
+					Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
+							Zombie.Type.HUMAN);
+					zombie.defineBody();
+					addZombie(zombie);
+					zombiesToSpawn -= 1;
+				});
+			}
+			else {
+				zombieSpawns.forEach(sp -> {
+					Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
+							randomZombieType.getRandom());
+					zombie.defineBody();
+					addZombie(zombie);
+					zombiesToSpawn -= 1;
+				});
+			}
 			spawnCooldown = 3f;
 		} else {
 			spawnCooldown -= delta;
