@@ -122,7 +122,7 @@ public class Human extends Character{
 			if (zombie != closestZombie) {
 				double temp1 = distanceFrom(closestZombie);
 				double temp2 = distanceFrom(zombie);
-				if (temp2 > temp1) {
+				if (temp2 < temp1) {
 					closestZombie = zombie;
 				}
 			}
