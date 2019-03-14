@@ -61,13 +61,12 @@ public class WorldContactListener implements ContactListener {
 	 * @param fB		the second fixture
 	 */
 	public void humanContactBegun(Fixture fA, FixtureType fBType, Fixture fB) {
-		Human human = (Human) fA.getBody().getUserData();
 		switch(fBType) {
-		case PLAYER:
-			human.beginContact();
-			break;
-		case MELEE_SENSOR: //TODO: Create zombie attacking sensor
+		case ZOMBIE:
 			((Zombie)fB.getBody().getUserData()).beginContact();
+			break;
+		case BOSSZOMBIE:
+			((BossZombie)fB.getBody().getUserData()).beginContact();
 			break;
 		default:
 			break;
@@ -85,6 +84,9 @@ public class WorldContactListener implements ContactListener {
 		switch(fBType) {
 		case PLAYER:
 			zombie.beginContact();
+			break;
+		case HUMAN:
+			((Human)fB.getBody().getUserData()).beginContact();
 			break;
 		case MELEE_SENSOR:
 			((Player)fB.getBody().getUserData()).onMeleeRangeEntered(zombie);
@@ -105,6 +107,9 @@ public class WorldContactListener implements ContactListener {
 		switch(fBType) {
 		case PLAYER:
 			boss.beginContact();
+			break;
+		case HUMAN:
+			((Human)fB.getBody().getUserData()).beginContact();
 			break;
 		case MELEE_SENSOR:
 			((Player)fB.getBody().getUserData()).onMeleeRangeEntered(boss);
@@ -195,6 +200,9 @@ public class WorldContactListener implements ContactListener {
 		case PLAYER:
 			playerContactEnded(fA, fBType, fB);
 			break;
+		case HUMAN:
+			humanContactEnded(fA, fBType, fB);
+			break;
 		case MELEE_SENSOR:
 			meleeSensorContactEnded(fA, fBType, fB);
 			break;
@@ -215,8 +223,30 @@ public class WorldContactListener implements ContactListener {
 		case PLAYER:
 			zombie.endContact();
 			break;
+		case HUMAN:
+			zombie.endContact();
+			break;
 		case MELEE_SENSOR:
 			((Player)fB.getBody().getUserData()).onMeleeRangeLeft(zombie);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	/**
+	 * Called when a human leaves contact with a second fixture.
+	 * @param fA		the human body fixture
+	 * @param fBType	the type of the second fixture
+	 * @param fB		the second fixture
+	 */
+	public void humanContactEnded(Fixture fA, FixtureType fBType, Fixture fB) {
+		switch(fBType) {
+		case ZOMBIE:
+			((Zombie)fB.getBody().getUserData()).endContact();
+			break;
+		case BOSSZOMBIE:
+			((BossZombie)fB.getBody().getUserData()).endContact();
 			break;
 		default:
 			break;
@@ -233,6 +263,9 @@ public class WorldContactListener implements ContactListener {
 		BossZombie boss = (BossZombie) fA.getBody().getUserData();
 		switch(fBType) {
 		case PLAYER:
+			boss.endContact();
+			break;
+		case HUMAN:
 			boss.endContact();
 			break;
 		case MELEE_SENSOR:

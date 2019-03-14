@@ -123,18 +123,14 @@ public class Zombie extends Character {
 			return;
 		}
 		
-		Player player = gameManager.getPlayer();
-		
-		Vector2 playerVector = getVectorTo(player);
-		
-		b2body.applyLinearImpulse(playerVector.nor().scl(speedMulti), getPos(), true);
-		
-		double angle = Math.toDegrees(Math.atan2(playerVector.y, playerVector.x)) - 90;
-		
+		Character human = closestHuman();
+		Vector2 humanVector = getVectorTo(human);
+		b2body.applyLinearImpulse(humanVector.nor().scl(speedMulti), getPos(), true);
+		double angle = Math.toDegrees(Math.atan2(humanVector.y, humanVector.x)) - 90;
 		this.setAngle(angle);
 		
 		if (inMeleeRange && hitRefresh > hitCooldown) {
-			gameManager.getPlayer().takeDamage(this.attackDamage);
+			human.takeDamage(this.attackDamage, this);
 			hitRefresh = 0;
 		} else {
 			hitRefresh += delta;
@@ -159,9 +155,8 @@ public class Zombie extends Character {
 	
 	// Assessment 3: added knockback and stun when hit by the player to make killing swarms easier.
 	@Override
-	public void takeDamage(int damage) {
-		Player player = gameManager.getPlayer();
-		Vector2 impulse = getVectorTo(player).nor();
+	public void takeDamage(int damage, Character attacker) {
+		Vector2 impulse = getVectorTo(attacker).nor();
 		
 		b2body.applyLinearImpulse(impulse.scl(-8f * b2body.getMass()), getPos(), true);
 		
@@ -178,13 +173,16 @@ public class Zombie extends Character {
 	/**
 	 * Function to return the closest human to this zombie
 	 */
-	private Human closestHuman() {
+	private Character closestHuman() {
 		ArrayList<Human> humanList = gameManager.getHumans();
-		//humanList.add(gameManager.getPlayer());
-		Human closestHuman = humanList.get(0);
+		Player player = gameManager.getPlayer();
+		Character closestHuman = player;
 		for (Human human : humanList) {
 			if (human != closestHuman) {
 				double temp1 = distanceFrom(closestHuman);
+				if (closestHuman == player) {
+					temp1 /= 5;
+				}
 				double temp2 = distanceFrom(human);
 				if (temp2 < temp1) {
 					closestHuman = human;

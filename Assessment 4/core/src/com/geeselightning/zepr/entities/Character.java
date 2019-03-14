@@ -98,6 +98,6 @@ public abstract class Character extends Entity {
 	}
 
     // Decreases health by value of dmg
-    public abstract void takeDamage(int dmg);
+    public abstract void takeDamage(int dmg, Character attacker);
 
 }

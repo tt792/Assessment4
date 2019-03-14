@@ -17,9 +17,7 @@ import com.geeselightning.zepr.game.Zepr;
 import com.geeselightning.zepr.util.Constant;
 import com.geeselightning.zepr.world.BodyFactory;
 import com.geeselightning.zepr.world.FixtureType;
-import com.geeselightning.zepr.world.Level;
 import com.geeselightning.zepr.world.WorldContactListener;
-import com.geeselightning.zepr.world.Level.Location;
 
 /**
  * Represents the player-controlled character. <br/>
@@ -171,7 +169,7 @@ public class Player extends Character {
 		if (attacking && hitRefresh > hitCooldown) {
 			this.sprite.setTexture(attackTexture);
 			final int damage = isPowerUpActive(PowerUp.Type.STRENGTH) ? attackDamage * 2 : attackDamage;
-			zombiesInRange.forEach(z -> z.takeDamage(damage));
+			zombiesInRange.forEach(z -> z.takeDamage(damage, this));
 			hitRefresh = (isPowerUpActive(PowerUp.Type.RAPID_FIRE)) ? hitCooldown / 2 : 0;
 		} else {
 			this.sprite.setTexture(mainTexture);
@@ -189,7 +187,7 @@ public class Player extends Character {
 	}
 
 	@Override
-	public void takeDamage(int damage) {
+	public void takeDamage(int damage, Character attacker) {
 		// If dev mode is active or the player has the immunity power-up, don't apply damage.
 		// Asessment 3: added dev mode check.
 		if (isPowerUpActive(PowerUp.Type.IMMUNITY) || Zepr.devMode) {

@@ -112,7 +112,7 @@ public class BossZombie extends Character {
 		this.setAngle(angle);
 		
 		if (inMeleeRange && hitRefresh > hitCooldown) {
-			gameManager.getPlayer().takeDamage(this.attackDamage);
+			gameManager.getPlayer().takeDamage(this.attackDamage, this);
 			hitRefresh = 0;
 		} else {
 			hitRefresh += delta;
@@ -134,9 +134,8 @@ public class BossZombie extends Character {
 	}
 	
 	@Override
-	public void takeDamage(int damage) {
-		Player player = gameManager.getPlayer();
-		Vector2 impulse = getVectorTo(player);
+	public void takeDamage(int damage, Character attacker) {
+		Vector2 impulse = getVectorTo(attacker);
 
 		b2body.applyLinearImpulse(impulse.scl(-3f * b2body.getMass()), getPos(), true);
 		

@@ -80,7 +80,10 @@ public class Human extends Character{
 		}
 		if (inMeleeRange && hitRefresh > hitCooldown) {
 			//damage the zombie in question
-			hitRefresh = 0;
+			if (zombie != null) {
+				zombie.takeDamage(this.attackDamage, this);
+				hitRefresh = 0;
+			}
 		} else {
 			hitRefresh += delta;
 		}
@@ -96,10 +99,9 @@ public class Human extends Character{
 
 
 	@Override
-	public void takeDamage(int damage) {
+	public void takeDamage(int damage, Character attacker) {
 		//zombie reference
-		Zombie zombie = new Zombie(parent, damageMulti, initialPos, damageMulti, null); //replace with ref to closest zombie
-		Vector2 impulse = getVectorTo(zombie).nor();
+		Vector2 impulse = getVectorTo(attacker).nor();
 		
 		b2body.applyLinearImpulse(impulse.scl(-8f * b2body.getMass()), getPos(), true);
 		

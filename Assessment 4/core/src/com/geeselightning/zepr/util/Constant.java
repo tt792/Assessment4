@@ -35,7 +35,7 @@ public final class Constant {
 	public static final float ZOMBIEHITCOOLDOWN = 1;
 	
 	public static final int HUMANMAXHP = 100;
-	public static final int HUMANDMG = 10;
+	public static final int HUMANDMG = 50;
 	public static final float HUMANSPEED = 3;
 	public static final float HUMANHITCOOLDOWN = 1;
 	public static final int HUMANRANGE = 20;
