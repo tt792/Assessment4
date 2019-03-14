@@ -59,6 +59,7 @@ public class Player extends Character {
 	}
 
 	public int levelToReturn;
+	public boolean beenZombie;
 	
 	private Type type;
 
@@ -199,7 +200,12 @@ public class Player extends Character {
 					if(hitsTaken >= Constant.PLAYERTURNHITS) {
 						double turnRoll = Math.random();
 						
-						if (turnRoll <= Constant.PLAYERTURNCHANCE) {
+						if (beenZombie) {
+							if (turnRoll <= Constant.PLAYERTURNCHANCE2) {
+								TurnToZombie();
+							}
+						}
+						else if (turnRoll <= Constant.PLAYERTURNCHANCE) {
 							TurnToZombie();
 						}
 					}
@@ -215,6 +221,7 @@ public class Player extends Character {
 	
 	public void TurnToZombie() {
 		levelToReturn = GameManager.instance.getLevelProgress();
+		GameManager.instance.cureFound = false;
 		parent.isZombie = true;
 		parent.changeScreen(Zepr.ZOMBIE);
 	}

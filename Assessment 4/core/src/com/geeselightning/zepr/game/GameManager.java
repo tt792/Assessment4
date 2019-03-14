@@ -469,6 +469,7 @@ public class GameManager implements Disposable {
 	void returnToNormalGame() {
 		setLevelProgress(player.levelToReturn);
 		player.SetHitsTaken(0);
+		player.beenZombie = true;
 		parent.changeScreen(Zepr.ZOMBIE3);
 	}
 	
