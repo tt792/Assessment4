@@ -1,5 +1,7 @@
 package com.geeselightning.zepr.entities;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -171,5 +173,24 @@ public class Zombie extends Character {
     		health = 0;
     		this.alive = false;
     	}
+	}
+	
+	/**
+	 * Function to return the closest human to this zombie
+	 */
+	private Human closestHuman() {
+		ArrayList<Human> humanList = gameManager.getHumans();
+		//humanList.add(gameManager.getPlayer());
+		Human closestHuman = humanList.get(0);
+		for (Human human : humanList) {
+			if (human != closestHuman) {
+				double temp1 = distanceFrom(closestHuman);
+				double temp2 = distanceFrom(human);
+				if (temp2 < temp1) {
+					closestHuman = human;
+				}
+			}
+		}
+		return closestHuman;
 	}
 }

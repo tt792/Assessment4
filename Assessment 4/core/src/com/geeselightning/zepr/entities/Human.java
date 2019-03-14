@@ -70,13 +70,14 @@ public class Human extends Character{
 		 * need to get list of the zombies here
 		 */
 		Zombie zombie = closestZombie();
-		Vector2 zombieVector = getVectorTo(zombie);
-		b2body.applyLinearImpulse(zombieVector.nor().scl(speedMulti), getPos(), true);
-		
-		double angle = Math.toDegrees(Math.atan2(zombieVector.y,  zombieVector.x)) - 90;
-		
-		this.setAngle(angle);
-		
+		if (zombie != null) {
+			Vector2 zombieVector = getVectorTo(zombie);
+			b2body.applyLinearImpulse(zombieVector.nor().scl(speedMulti), getPos(), true);
+			
+			double angle = Math.toDegrees(Math.atan2(zombieVector.y,  zombieVector.x)) - 90;
+			
+			this.setAngle(angle);
+		}
 		if (inMeleeRange && hitRefresh > hitCooldown) {
 			//damage the zombie in question
 			hitRefresh = 0;
@@ -117,6 +118,7 @@ public class Human extends Character{
 	 */
 	private Zombie closestZombie() {
 		ArrayList<Zombie> zombieList = gameManager.getZombies();
+		if (zombieList.size() != 0) {
 		Zombie closestZombie = zombieList.get(0);
 		for (Zombie zombie : zombieList) {
 			if (zombie != closestZombie) {
@@ -127,7 +129,8 @@ public class Human extends Character{
 				}
 			}
 		}
-		return closestZombie;	
+		return closestZombie;
+		} else { return null; }
 	}
 
 }
