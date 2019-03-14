@@ -58,7 +58,7 @@ public class Player extends Character {
 		}
 	}
 
-	public Level levelToReturn;
+	public int levelToReturn;
 	
 	private Type type;
 
@@ -112,6 +112,10 @@ public class Player extends Character {
 	public boolean isAttacking() {
 		return attacking;
 	}
+	
+	public void SetHitsTaken(int hitsTaken) {
+		this.hitsTaken = hitsTaken;
+	}
 
 	public boolean isPowerUpActive(PowerUp.Type type) {
 		return activePowerUps.containsKey(type);
@@ -144,6 +148,9 @@ public class Player extends Character {
 			} else {
 				this.health = (int) (type.healthMultiplier * Constant.PLAYERMAXHP);
 			}
+		}
+		if (isPowerUpActive(PowerUp.Type.STORYCURE)) {
+			gameManager.cureFound = true;
 		}
 
 		// Reduces the time left on a power-up every update cycle, and removes expired ones.
@@ -207,7 +214,7 @@ public class Player extends Character {
 	}
 	
 	public void TurnToZombie() {
-		levelToReturn = GameManager.instance.getLevel();
+		levelToReturn = GameManager.instance.getLevelProgress();
 		parent.isZombie = true;
 		parent.changeScreen(Zepr.ZOMBIE);
 	}

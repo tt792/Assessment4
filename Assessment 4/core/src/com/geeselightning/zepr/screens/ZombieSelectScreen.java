@@ -221,20 +221,24 @@ public class ZombieSelectScreen extends DefaultScreen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				stageDescription.setText(zombieLevel1Descriptor);
-				gameManager.setLevelProgress(6);
 				gameManager.setLocation(Level.Location.ZOMBIE1);
 				levelSet = true;
 			}
 		});
-		zombieLevel2.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				stageDescription.setText(zombieLevel1Descriptor);
-				gameManager.setLevelProgress(7);
-				gameManager.setLocation(Level.Location.ZOMBIE2);
-				levelSet = true;
-			}
-		});
+		
+		if(gameManager.getLevelProgress() < 11)
+			disabledButtonStyle(zombieLevel2);
+		else {
+			enabledButtonStyle(zombieLevel2);
+			zombieLevel2.addListener(new ChangeListener() {
+				@Override
+				public void changed(ChangeEvent event, Actor actor) {
+					stageDescription.setText(zombieLevel1Descriptor);
+					gameManager.setLocation(Level.Location.ZOMBIE2);
+					levelSet = true;
+				}
+			});
+		}
 	}
 	
 	// Assessment 3: convenience method to set a button to the disabled style.
