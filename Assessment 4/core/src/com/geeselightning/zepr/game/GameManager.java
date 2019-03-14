@@ -2,11 +2,13 @@ package com.geeselightning.zepr.game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -379,14 +381,16 @@ public class GameManager implements Disposable {
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
 		//testing humans being added
-		for (int i = 0; i < 5; i++) {
-			Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
-			human.defineBody();
-			addHuman(human);
+		if(levelProgress < 9) {
+			for (int i = 0; i < 1; i++) {
+				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
+				human.defineBody();
+				addHuman(human);
+			}
 		}
 		//ending testing of humans
 		if (waveProgress > 0) {
-			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, randomPowerUpType.getRandom());
+			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, /*randomPowerUpType.getRandom()*/PowerUp.Type.CURE);
 			powerUp.defineBody();
 			addPowerUp(powerUp);
 		}
@@ -424,13 +428,25 @@ public class GameManager implements Disposable {
 	public void spawnZombies(float delta) {
 		if (spawnCooldown <= 0) {
 			List<Vector2> zombieSpawns = level.getZombieSpawns();
-			zombieSpawns.forEach(sp -> {
-				Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
-						randomZombieType.getRandom());
-				zombie.defineBody();
-				addZombie(zombie);
-				zombiesToSpawn -= 1;
-			});
+			
+			if(getLevelProgress() > 9) {
+				zombieSpawns.forEach(sp -> {
+					Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
+							Zombie.Type.HUMAN);
+					zombie.defineBody();
+					addZombie(zombie);
+					zombiesToSpawn -= 1;
+				});
+			}
+			else {
+				zombieSpawns.forEach(sp -> {
+					Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
+							randomZombieType.getRandom());
+					zombie.defineBody();
+					addZombie(zombie);
+					zombiesToSpawn -= 1;
+				});
+			}
 			spawnCooldown = 3f;
 		} else {
 			spawnCooldown -= delta;
@@ -494,6 +510,10 @@ public class GameManager implements Disposable {
 			this.powerUps.clear();
 			spawnPlayer();
 			loadWave();
+		}
+		
+		if (player.hasCure && Gdx.input.isKeyPressed(Input.Keys.E)) {
+			cure();
 		}
 
 		// Check if the wave has been completed
@@ -561,6 +581,19 @@ public class GameManager implements Disposable {
 		world.step(1 / 60f, 6, 2);
 	}
 
+	public void cure() {
+		for (Iterator<Zombie> zl = getZombies().iterator(); zl.hasNext(); ) {
+			Zombie zombie = zl.next();
+			double distance = player.distanceFrom(zombie);
+			if (distance <= Constant.CURERANGE) {
+				Human human = new Human(parent, 0.3f, zombie.getPos(), 0);
+				human.defineBody();
+				addHuman(human);
+				zombie.takeDamage(1000);
+			}
+		}
+	}
+	
 	/**
 	 * Retrieves user input from the {@link InputProcessor} and moves the player
 	 * character accordingly.

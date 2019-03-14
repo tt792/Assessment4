@@ -1,10 +1,14 @@
 package com.geeselightning.zepr.entities;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -38,7 +42,8 @@ public class Player extends Character {
 
 		NERDY("player01.png", "player01_attack.png", 1.5f, 1.0f, 1.0f),
 		SPORTY("player02.png", "player02_attack.png", 1.0f, 1.0f, 1.5f),
-		HEAVY("player03.png", "player03_attack.png", 1.0f, 1.5f, 1.0f);
+		HEAVY("player03.png", "player03_attack.png", 1.0f, 1.5f, 1.0f),
+		ZOMBIE("zombie01.png", "zombie01.png", 1.25f, 1.25f, 1.25f);
 
 		String normalTextureName;
 		String attackTextureName;
@@ -58,6 +63,7 @@ public class Player extends Character {
 
 	public int levelToReturn;
 	public boolean beenZombie;
+	public boolean hasCure;
 	
 	private Type type;
 
@@ -148,6 +154,10 @@ public class Player extends Character {
 				this.health = (int) (type.healthMultiplier * Constant.PLAYERMAXHP);
 			}
 		}
+		
+		if (isPowerUpActive(PowerUp.Type.CURE)) {
+			hasCure = true;
+		}
 		if (isPowerUpActive(PowerUp.Type.STORYCURE)) {
 			gameManager.cureFound = true;
 		}
@@ -215,6 +225,31 @@ public class Player extends Character {
 				health = 0;
 			}
 		}
+	}
+	
+	private void UseCure() {
+		/*
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 */
 	}
 	
 	public void TurnToZombie() {

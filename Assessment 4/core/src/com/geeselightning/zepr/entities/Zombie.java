@@ -29,7 +29,8 @@ public class Zombie extends Character {
 	public enum Type {
 		SLOW("zombie01.png"),
 		MEDIUM("zombie02.png"),
-		FAST("zombie03.png");
+		FAST("zombie03.png"),
+		HUMAN("player03.png");
 		
 		// The filename of the image to use as a texture
 		String textureName;
@@ -40,6 +41,8 @@ public class Zombie extends Character {
 		
 	}
 
+	public boolean turned = false;
+	
 	private final float hitCooldown = Constant.ZOMBIEHITCOOLDOWN;
 	private float healthMulti;
 	private float speedMulti;
@@ -76,6 +79,9 @@ public class Zombie extends Character {
 			damageMulti = Constant.FASTDMGMULT;
 			break;
 		default:
+			healthMulti = Constant.MEDHPMULT;
+			speedMulti = Constant.MEDSPEEDMULT;
+			damageMulti = Constant.MEDDMGMULT;
 			break;
 		}
 		this.speed = (int) (Constant.ZOMBIESPEED * speedMulti);
@@ -117,6 +123,7 @@ public class Zombie extends Character {
 	@Override
 	public void update(float delta) {
 		super.update(delta);
+		
 		
 		if (stunTimer > 0) {
 			stunTimer -= delta;

@@ -25,7 +25,7 @@ public class RandomEnum<E extends Enum<?>> {
 	 * @return
 	 */
 	public E getRandom() {
-		return values[rand.nextInt(values.length)];
+		return values[rand.nextInt(3)];
 	}
 
 }

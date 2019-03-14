@@ -189,7 +189,7 @@ public class ZombieSelectScreen extends DefaultScreen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				characterDescription.setText(zombieDescriptor);
-				gameManager.setPlayerType(Player.Type.NERDY);
+				gameManager.setPlayerType(Player.Type.ZOMBIE);
 				playerSet = true;
 			}
 		});
