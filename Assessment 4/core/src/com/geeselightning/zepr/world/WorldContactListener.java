@@ -29,7 +29,6 @@ public class WorldContactListener implements ContactListener {
 		
 		FixtureType fAType = (FixtureType) fA.getUserData();
 		FixtureType fBType = (FixtureType) fB.getUserData();
-		
 		switch(fAType) {
 		case ZOMBIE:
 			zombieContactBegun(fA, fBType, fB);
@@ -61,12 +60,14 @@ public class WorldContactListener implements ContactListener {
 	 * @param fB		the second fixture
 	 */
 	public void humanContactBegun(Fixture fA, FixtureType fBType, Fixture fB) {
+		Human human = (Human) fA.getBody().getUserData();
 		switch(fBType) {
 		case ZOMBIE:
+			human.beginContact();
 			((Zombie)fB.getBody().getUserData()).beginContact();
 			break;
 		case BOSSZOMBIE:
-			((BossZombie)fB.getBody().getUserData()).beginContact();
+			human.beginContact();
 			break;
 		default:
 			break;
@@ -86,7 +87,7 @@ public class WorldContactListener implements ContactListener {
 			zombie.beginContact();
 			break;
 		case HUMAN:
-			((Human)fB.getBody().getUserData()).beginContact();
+			zombie.beginContact();
 			break;
 		case MELEE_SENSOR:
 			((Player)fB.getBody().getUserData()).onMeleeRangeEntered(zombie);
@@ -109,7 +110,7 @@ public class WorldContactListener implements ContactListener {
 			boss.beginContact();
 			break;
 		case HUMAN:
-			((Human)fB.getBody().getUserData()).beginContact();
+			boss.beginContact();
 			break;
 		case MELEE_SENSOR:
 			((Player)fB.getBody().getUserData()).onMeleeRangeEntered(boss);
@@ -241,12 +242,13 @@ public class WorldContactListener implements ContactListener {
 	 * @param fB		the second fixture
 	 */
 	public void humanContactEnded(Fixture fA, FixtureType fBType, Fixture fB) {
+		Human human = (Human) fA.getBody().getUserData();
 		switch(fBType) {
 		case ZOMBIE:
-			((Zombie)fB.getBody().getUserData()).endContact();
+			human.endContact();
 			break;
 		case BOSSZOMBIE:
-			((BossZombie)fB.getBody().getUserData()).endContact();
+			human.endContact();
 			break;
 		default:
 			break;

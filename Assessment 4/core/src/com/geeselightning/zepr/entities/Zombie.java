@@ -135,7 +135,6 @@ public class Zombie extends Character {
 		b2body.applyLinearImpulse(humanVector.nor().scl(speedMulti), getPos(), true);
 		double angle = Math.toDegrees(Math.atan2(humanVector.y, humanVector.x)) - 90;
 		this.setAngle(angle);
-		
 		if (inMeleeRange && hitRefresh > hitCooldown) {
 			human.takeDamage(this.attackDamage, this);
 			hitRefresh = 0;
@@ -163,10 +162,11 @@ public class Zombie extends Character {
 	// Assessment 3: added knockback and stun when hit by the player to make killing swarms easier.
 	@Override
 	public void takeDamage(int damage, Character attacker) {
-		Vector2 impulse = getVectorTo(attacker).nor();
+		if (attacker != null) {
+			Vector2 impulse = getVectorTo(attacker).nor();
 		
-		b2body.applyLinearImpulse(impulse.scl(-8f * b2body.getMass()), getPos(), true);
-		
+			b2body.applyLinearImpulse(impulse.scl(-8f * b2body.getMass()), getPos(), true);
+		}
 		stunTimer = 0.5f;
 		
 		if (health - damage >= 0) {

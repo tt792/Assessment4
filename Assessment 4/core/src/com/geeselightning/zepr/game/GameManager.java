@@ -60,7 +60,7 @@ public class GameManager implements Disposable {
 	private boolean levelLoaded = false;
 
 	// The furthest level reached.
-	private int levelProgress = 20;
+	private int levelProgress = 8;
 
 	/* GameScreen display objects */
 	private OrthographicCamera gameCamera;
@@ -382,7 +382,7 @@ public class GameManager implements Disposable {
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
 		//testing humans being added
 		if(levelProgress < 9) {
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 5; i++) {
 				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
 				human.defineBody();
 				addHuman(human);
@@ -589,7 +589,7 @@ public class GameManager implements Disposable {
 				Human human = new Human(parent, 0.3f, zombie.getPos(), 0);
 				human.defineBody();
 				addHuman(human);
-				zombie.takeDamage(1000);
+				zombie.takeDamage(1000, null);
 			}
 		}
 	}
