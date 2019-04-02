@@ -380,15 +380,16 @@ public class GameManager implements Disposable {
 		hud.setProgressLabel(waveProgress + 1, zombiesToSpawn);
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
-		//testing humans being added
+		
+		//Assessment 4 Added human spawning at the start of a level
 		if(levelProgress < 9) {
 			for (int i = 0; i < 5; i++) {
-				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0);
+				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0); //create the human at the same place as the player
 				human.defineBody();
 				addHuman(human);
 			}
 		}
-		//ending testing of humans
+		
 		if (waveProgress > 0) {
 			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, /*randomPowerUpType.getRandom()*/PowerUp.Type.CURE);
 			powerUp.defineBody();

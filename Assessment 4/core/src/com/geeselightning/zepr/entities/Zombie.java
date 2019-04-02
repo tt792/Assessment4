@@ -178,7 +178,8 @@ public class Zombie extends Character {
 	}
 	
 	/**
-	 * Function to return the closest human to this zombie
+	 * Assessment 4: 
+	 * (REQUIREMENT) Added function to calculate the closest human to this zombie
 	 */
 	private Character closestHuman() {
 		ArrayList<Human> humanList = gameManager.getHumans();
@@ -188,7 +189,7 @@ public class Zombie extends Character {
 			if (human != closestHuman) {
 				double temp1 = distanceFrom(closestHuman);
 				if (closestHuman == player) {
-					temp1 /= 5;
+					temp1 /= 5; //greater weighting on the player so zombies still chase them
 				}
 				double temp2 = distanceFrom(human);
 				if (temp2 < temp1) {

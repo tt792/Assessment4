@@ -13,7 +13,9 @@ import com.geeselightning.zepr.util.Constant;
 import com.geeselightning.zepr.world.FixtureType;
 
 /**
- * A human computer-controlled character that will persue zombies and attempt to attack zombies
+ * Assessment 4
+ * (REQUIREMENT)  Added a human that extends the character class, humans will persue and attack zombies, generally helping the player </br>
+ * (REQUIREMENT) On activation of the Cure power-up zombies get turned into humans
  */
 public class Human extends Character{
 	
@@ -66,11 +68,8 @@ public class Human extends Character{
 			return;
 		}
 		
-		/*
-		 * need to get list of the zombies here
-		 */
-		Zombie zombie = closestZombie();
-		if (zombie != null) {
+		Zombie zombie = closestZombie(); //get the closest zombie
+		if (zombie != null) { //if there is no zombie then dont break
 			Vector2 zombieVector = getVectorTo(zombie);
 			b2body.applyLinearImpulse(zombieVector.nor().scl(speedMulti), getPos(), true);
 			
@@ -97,8 +96,10 @@ public class Human extends Character{
 		this.inMeleeRange = false;
 	}
 
-
-	@Override
+	/**
+	 * Assessment 4:
+	 * (REQUIREMENT) Added so that humans could be damaged and killed
+	 */
 	public void takeDamage(int damage, Character attacker) {
 		//zombie reference
 		Vector2 impulse = getVectorTo(attacker).nor();
@@ -116,7 +117,8 @@ public class Human extends Character{
 	}
 	
 	/**
-	 * Function to return the closest zombie to this human
+	 * Assessment 4: 
+	 * (REQUIREMENT) Added function to calculate the closest human to this Zombie
 	 */
 	private Zombie closestZombie() {
 		ArrayList<Zombie> zombieList = gameManager.getZombies();

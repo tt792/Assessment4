@@ -36,7 +36,7 @@ public class WorldContactListener implements ContactListener {
 		case BOSSZOMBIE:
 			bossZombieContactBegun(fA, fBType, fB);
 			break;
-		case HUMAN:
+		case HUMAN: //Assessment 4: Added option for human contact requirements
 			humanContactBegun(fA, fBType, fB);
 			break;
 		case PLAYER:
@@ -54,6 +54,7 @@ public class WorldContactListener implements ContactListener {
 	}
 	
 	/**
+	 * Assessment 4:
 	 * Called when a human comes into contact with a second fixture.
 	 * @param fA		the human body fixture
 	 * @param fBType	the type of the second fixture
@@ -201,7 +202,7 @@ public class WorldContactListener implements ContactListener {
 		case PLAYER:
 			playerContactEnded(fA, fBType, fB);
 			break;
-		case HUMAN:
+		case HUMAN: //Assessment 4: Added selection for human contact end
 			humanContactEnded(fA, fBType, fB);
 			break;
 		case MELEE_SENSOR:
@@ -236,6 +237,7 @@ public class WorldContactListener implements ContactListener {
 	}
 	
 	/**
+	 * Assessment 4:
 	 * Called when a human leaves contact with a second fixture.
 	 * @param fA		the human body fixture
 	 * @param fBType	the type of the second fixture

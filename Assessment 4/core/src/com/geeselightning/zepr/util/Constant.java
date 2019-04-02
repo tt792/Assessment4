@@ -34,6 +34,7 @@ public final class Constant {
 	public static final int ZOMBIERANGE = 20;
 	public static final float ZOMBIEHITCOOLDOWN = 1;
 	
+	//Assessment 4: Added constants for human objects
 	public static final int HUMANMAXHP = 100;
 	public static final int HUMANDMG = 10;
 	public static final float HUMANSPEED = 3;
