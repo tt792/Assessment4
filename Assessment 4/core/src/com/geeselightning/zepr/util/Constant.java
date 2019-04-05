@@ -24,8 +24,10 @@ public final class Constant {
 	public static final int PLAYERDMG = 100000;//20;
 	public static final int PLAYERRANGE = 50;
 	public static final float PLAYERHITCOOLDOWN = 0.2f;
+	
+	//Assessment 4: Constants for turning into a zombie
 	public static final int PLAYERTURNHITS = 4; //Number of hits before player has a chance to turn
-	public static final double PLAYERTURNCHANCE = 1; //Chance of the player to turn when hit
+	public static final double PLAYERTURNCHANCE = 0.3333; //Chance of the player to turn when hit
 	public static final double PLAYERTURNCHANCE2 = 0.01; //Chance to turn after having turned once
 
 	public static final float ZOMBIESPEED = 4;
@@ -58,6 +60,6 @@ public final class Constant {
 	public static final float IMMUNITYTIME = 5;
 	public static final float ATKUPTIME = 10;
 	public static final float RPDFIRETIME = 10;
-	public static final double CURERANGE = 10;
+	public static final double CURERANGE = 5;
 	
 }

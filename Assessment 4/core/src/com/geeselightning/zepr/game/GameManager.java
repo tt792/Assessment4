@@ -330,6 +330,7 @@ public class GameManager implements Disposable {
 
 		levelLoaded = true;
 		
+		//Assessment 4: Spawn a cure to become human again
 		if(levelProgress == 11) {
 			PowerUp powerUp = new PowerUp(parent, 0.2f, new Vector2(level.getPlayerSpawn().x + 10.f, level.getPlayerSpawn().y + 10.f), 0, PowerUp.Type.STORYCURE);
 			powerUp.defineBody();
@@ -483,6 +484,7 @@ public class GameManager implements Disposable {
 			parent.changeScreen(Zepr.LEVEL_COMPLETE);
 	}
 
+	//Assessment 4: Stop playing as a zombie and return to where you where
 	void returnToNormalGame() {
 		setLevelProgress(player.levelToReturn);
 		player.SetHitsTaken(0);
@@ -513,6 +515,7 @@ public class GameManager implements Disposable {
 			loadWave();
 		}
 		
+		//Assessment 4: Use the cure to turn zombies into humans
 		if (player.hasCure && Gdx.input.isKeyPressed(Input.Keys.E)) {
 			cure();
 		}
@@ -582,6 +585,7 @@ public class GameManager implements Disposable {
 		world.step(1 / 60f, 6, 2);
 	}
 
+	//Assessment 4: Cure powerup, turns zombies into humans
 	public void cure() {
 		for (Iterator<Zombie> zl = getZombies().iterator(); zl.hasNext(); ) {
 			Zombie zombie = zl.next();

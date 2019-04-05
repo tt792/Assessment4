@@ -155,9 +155,12 @@ public class Player extends Character {
 			}
 		}
 		
+		//Assessment 4: Cure a selection of zombies and turn them into humans
 		if (isPowerUpActive(PowerUp.Type.CURE)) {
 			hasCure = true;
 		}
+		
+		//Assessment 4: Return to being a normal human from being a zombie
 		if (isPowerUpActive(PowerUp.Type.STORYCURE)) {
 			gameManager.cureFound = true;
 		}
@@ -204,6 +207,8 @@ public class Player extends Character {
 			return;
 		} else {
 			if (health - damage >= 0) {
+				
+				//Assessment 4: Allow the player to turn into a zombie when hit
 				if(!parent.isZombie) {
 					if(hitsTaken >= Constant.PLAYERTURNHITS) {
 						double turnRoll = Math.random();
@@ -227,31 +232,7 @@ public class Player extends Character {
 		}
 	}
 	
-	private void UseCure() {
-		/*
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
-	}
-	
+	//Assessment 4: Play as a zombie attacking humans instead
 	public void TurnToZombie() {
 		levelToReturn = GameManager.instance.getLevelProgress();
 		GameManager.instance.cureFound = false;
