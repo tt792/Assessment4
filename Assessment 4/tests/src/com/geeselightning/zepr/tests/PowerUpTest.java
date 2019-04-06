@@ -18,7 +18,7 @@ public class PowerUpTest {
     public void powerUpHealthAddsHPToPlayer() {
         Player player = new Player(null, 0.3f, new Vector2(0,5), 0f, Player.Type.NERDY);
         PowerUp heal = new PowerUp(null, 0.2f, new Vector2(7,7), 0, PowerUp.Type.HEAL);
-        player.takeDamage(50);
+        player.takeDamage(50, null);
         int damagedHealth = player.getHealth();
         player.onPickup(heal);
         player.update(1f);
@@ -32,7 +32,7 @@ public class PowerUpTest {
         PowerUp immunity = new PowerUp(null, 0.2f, new Vector2(7,7), 0, PowerUp.Type.IMMUNITY);
         player.onPickup(immunity);
         int initialHealth = player.getHealth();
-        player.takeDamage(10);
+        player.takeDamage(10, null);
         assertEquals("Immunity power-up should prevent damage", initialHealth, player.getHealth());
     }
     

@@ -55,7 +55,7 @@ public class WorldContactListener implements ContactListener {
 	
 	/**
 	 * Assessment 4:
-	 * Called when a human comes into contact with a second fixture.
+	 * (F13) Called when a human comes into contact with a second fixture.
 	 * @param fA		the human body fixture
 	 * @param fBType	the type of the second fixture
 	 * @param fB		the second fixture
@@ -238,7 +238,7 @@ public class WorldContactListener implements ContactListener {
 	
 	/**
 	 * Assessment 4:
-	 * Called when a human leaves contact with a second fixture.
+	 * (F13) Called when a human leaves contact with a second fixture.
 	 * @param fA		the human body fixture
 	 * @param fBType	the type of the second fixture
 	 * @param fB		the second fixture

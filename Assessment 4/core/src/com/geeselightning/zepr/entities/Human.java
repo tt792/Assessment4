@@ -13,9 +13,9 @@ import com.geeselightning.zepr.util.Constant;
 import com.geeselightning.zepr.world.FixtureType;
 
 /**
- * Assessment 4
- * (REQUIREMENT)  Added a human that extends the character class, humans will persue and attack zombies, generally helping the player </br>
- * (REQUIREMENT) On activation of the Cure power-up zombies get turned into humans
+ * Assessment 4: </br>
+ * <li>(F12) On activation of the Cure power-up zombies get turned into humans</li>
+ * <li>(F13) Added a human that extends the character class, humans will persue and attack zombies, generally helping the player </li>
  */
 public class Human extends Character{
 	
@@ -98,7 +98,8 @@ public class Human extends Character{
 
 	/**
 	 * Assessment 4:
-	 * (REQUIREMENT) Added so that humans could be damaged and killed
+	 * (F13) Added so that humans could be damaged and killed
+	 * @param Character attacker : this was added to add functionality based upon who attacked the character
 	 */
 	public void takeDamage(int damage, Character attacker) {
 		//zombie reference
@@ -118,7 +119,7 @@ public class Human extends Character{
 	
 	/**
 	 * Assessment 4: 
-	 * (REQUIREMENT) Added function to calculate the closest human to this Zombie
+	 * (F13) Added function to calculate the closest human to this Zombie
 	 */
 	private Zombie closestZombie() {
 		ArrayList<Zombie> zombieList = gameManager.getZombies();

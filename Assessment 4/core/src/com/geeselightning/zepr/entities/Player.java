@@ -1,14 +1,10 @@
 package com.geeselightning.zepr.entities;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -196,7 +192,10 @@ public class Player extends Character {
 		super.draw(batch);
 	}
 
-	@Override
+	/**
+	 * Assessment 4:
+	 * Changed function to, on taking damage from a Zombie, and after 4 hits, have an increasing chance for the player to turn into a zombie
+	 */
 	public void takeDamage(int damage, Character attacker) {
 		// If dev mode is active or the player has the immunity power-up, don't apply damage.
 		// Asessment 3: added dev mode check.
@@ -210,11 +209,11 @@ public class Player extends Character {
 						
 						if (beenZombie) {
 							if (turnRoll <= Constant.PLAYERTURNCHANCE2) {
-								TurnToZombie();
+								turnToZombie();
 							}
 						}
 						else if (turnRoll <= Constant.PLAYERTURNCHANCE) {
-							TurnToZombie();
+							turnToZombie();
 						}
 					}
 					hitsTaken++;
@@ -227,32 +226,11 @@ public class Player extends Character {
 		}
 	}
 	
-	private void UseCure() {
-		/*
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
-	}
-	
-	public void TurnToZombie() {
+	/**
+	 * Assessment 4:
+	 * (F11) This function implements the player turning into a Zombie and ensures that they can return to the same level once they find the cure
+	 */
+	public void turnToZombie() {
 		levelToReturn = GameManager.instance.getLevelProgress();
 		GameManager.instance.cureFound = false;
 		parent.isZombie = true;

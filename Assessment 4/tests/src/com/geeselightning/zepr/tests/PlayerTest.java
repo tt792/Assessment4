@@ -29,7 +29,7 @@ public class PlayerTest {
 	public void playerAcceptsDamage() {
 		assertNotEquals("Player health should not be null", nerdy.getHealth(), null);
 		int initialHealth = nerdy.getHealth();
-		nerdy.takeDamage(5);
+		nerdy.takeDamage(5, null);
 		assertEquals("Player should lose 5 health", nerdy.getHealth(), initialHealth - 5);
 	}
 	

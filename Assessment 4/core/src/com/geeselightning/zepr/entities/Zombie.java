@@ -179,7 +179,7 @@ public class Zombie extends Character {
 	
 	/**
 	 * Assessment 4: 
-	 * (REQUIREMENT) Added function to calculate the closest human to this zombie
+	 * (F13) Added function to calculate the closest human or player to this zombie
 	 */
 	private Character closestHuman() {
 		ArrayList<Human> humanList = gameManager.getHumans();

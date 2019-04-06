@@ -296,6 +296,8 @@ public class GameManager implements Disposable {
 
 	/**
 	 * Loads the {@link Level} defined by the location variable and sets level-specific fields.
+	 * Assessment 4:
+	 * (F12) When in the last Zombie level spawns the cure to heal the player
 	 */
 	public void loadLevel() {
 		System.out.println("Beginning level loading...");
@@ -423,7 +425,9 @@ public class GameManager implements Disposable {
 	}
 
 	/**
-	 * Spawns a set of zombies in the level.
+	 * Assessment 4:
+	 * <li>(F11) When in the last Zombie level spawns the cure to heal the player</li></br>
+	 * Spawns a set of Zombies in the level.
 	 * @param delta	the seconds since the last update cycle
 	 */
 	public void spawnZombies(float delta) {
@@ -433,7 +437,7 @@ public class GameManager implements Disposable {
 			if(getLevelProgress() > 9) {
 				zombieSpawns.forEach(sp -> {
 					Zombie zombie = new Zombie(parent, 0.3f, sp, 0,
-							Zombie.Type.HUMAN);
+							Zombie.Type.HUMAN); //spawns humans against the player in the Zombie Levels
 					zombie.defineBody();
 					addZombie(zombie);
 					zombiesToSpawn -= 1;
@@ -469,7 +473,9 @@ public class GameManager implements Disposable {
 	}
 
 	/**
-	 * Unlocks the next level and changes to the level complete screen.
+	 * Unlocks the next level and changes to the level complete screen. </br>
+	 * Assessment 4:
+	 * <li>(F11) Changed to update level progress when in Zombie levels</li>
 	 */
 	public void levelComplete() {
 		if (location.getNum() + 1 > levelProgress) {
@@ -491,6 +497,9 @@ public class GameManager implements Disposable {
 	}
 	
 	/**
+	 * <p>Assessment 4:
+	 * <li>(F12) Changed so that it activates the cure when the player presses the button E</li>
+	 * </p>
 	 * Runs update logic for each entity, processes player input and updates the camera.
 	 * @param delta	the seconds since the last update cycle
 	 */
@@ -582,15 +591,19 @@ public class GameManager implements Disposable {
 		world.step(1 / 60f, 6, 2);
 	}
 
+	/**
+	 * Assessment 4:
+	 * (F13) Implements the cure 'curing' zombies in an area around the player
+	 */
 	public void cure() {
-		for (Iterator<Zombie> zl = getZombies().iterator(); zl.hasNext(); ) {
+		for (Iterator<Zombie> zl = getZombies().iterator(); zl.hasNext(); ) { //loops through each zombie
 			Zombie zombie = zl.next();
 			double distance = player.distanceFrom(zombie);
-			if (distance <= Constant.CURERANGE) {
-				Human human = new Human(parent, 0.3f, zombie.getPos(), 0);
+			if (distance <= Constant.CURERANGE) { //if a zombie is within the range
+				Human human = new Human(parent, 0.3f, zombie.getPos(), 0); //create a human at that zombies location
 				human.defineBody();
 				addHuman(human);
-				zombie.takeDamage(1000, null);
+				zombie.takeDamage(1000, null); //kill the zombie in question
 			}
 		}
 	}

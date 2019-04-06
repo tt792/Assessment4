@@ -22,6 +22,8 @@ import com.geeselightning.zepr.util.Constant;
  * </ul>
  * @author Xzytl
  *
+ * Assessment 4:
+ * (F12) Added the Cure powerup, to 'cure' Zombies in an area around the player
  */
 public class PowerUp extends Entity {
 	

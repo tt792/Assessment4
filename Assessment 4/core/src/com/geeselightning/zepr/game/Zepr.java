@@ -15,6 +15,11 @@ import com.geeselightning.zepr.screens.*;
  * <li>replaced different level screens with GameScreen</li>
  * <li>added minigame screen</li>
  * </ul>
+ * Assessment 4 changes:
+ * <ul>
+ * <li>Added Zombie maps</li>
+ * <li></li>
+ * </ul>
  * @author Xzytl
  *
  */
@@ -50,6 +55,9 @@ public class Zepr extends Game {
 	/**
 	 * Changes the active screen to a predefined screen in Zepr.
 	 * @param screen	the new active screen
+	 * </br>
+	 * Assessment 4:
+	 * (F11) Changed to include the different levels for once the player is a Zombie
 	 */
 	public void changeScreen(int screen) {
 		
