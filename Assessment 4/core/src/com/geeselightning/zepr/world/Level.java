@@ -35,6 +35,8 @@ public class Level {
 		COURTYARD("Courtyard", "courtyard", 3),
 		LIBRARY("Library", "library", 4),
 		RONCOOKE("Ron Cooke Hub", "roncooke", 5),
+		
+		//Assessment 4: Zombie levels
 		ZOMBIE1("Level 1", "roncooke", 10),
 		ZOMBIE2("Level 2", "library", 11);
 		

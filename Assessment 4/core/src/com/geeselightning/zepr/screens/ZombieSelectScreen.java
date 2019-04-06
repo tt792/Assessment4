@@ -17,14 +17,11 @@ import com.geeselightning.zepr.game.Zepr;
 import com.geeselightning.zepr.world.Level;
 
 /**
- * Screen that displays level and player class options. <br/>
- * Assessment 3 changes:
+ * Screen that displays levels when playing as a zombie. <br/>
+ * Assessment 4 changes:
  * <ul>
- * <li>class now extends DefaultScreen</li>
- * <li>save/load functionality fully implemented</li>
- * <li>three additional levels added</li>
- * <li>level selection is now passed to GameManager for loading, rather than each level being a 
- * 		different screen to switch to.</li>
+ * <li>Shows zombie character</li>
+ * <li>Shows 2 levels that can be played</li>
  * </ul>
  * @author Xzytl
  *
@@ -212,9 +209,6 @@ public class ZombieSelectScreen extends DefaultScreen {
 	
 	/**
 	 * Enables/disables level selection buttons depending on whether the user has unlocked it.
-	 * Assessment 3: moved the following code from the show method so that it can
-	 * be called independently to allow dynamic button enabling/disabling (mainly for loading
-	 * functionality).
 	 */
 	private void setLevelSelectionHandlers() {
 		zombieLevel1.addListener(new ChangeListener() {
@@ -241,13 +235,11 @@ public class ZombieSelectScreen extends DefaultScreen {
 		}
 	}
 	
-	// Assessment 3: convenience method to set a button to the disabled style.
 	private void disabledButtonStyle(TextButton button) {
 		button.setColor(Color.DARK_GRAY);
 		button.getLabel().setColor(Color.DARK_GRAY);
 	}
 	
-	// Assessment 3: convenience method to set a button to the enabled style.
 	private void enabledButtonStyle(TextButton button) {
 		button.setColor(Color.WHITE);
 		button.getLabel().setColor(Color.WHITE);
