@@ -24,7 +24,7 @@ public abstract class DefaultScreen implements Screen {
 	
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+		Gdx.gl.glClearColor(106/255f, 176/255f, 76/255f, 1); //ASS4: DefaultScreen is now GREEN 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 

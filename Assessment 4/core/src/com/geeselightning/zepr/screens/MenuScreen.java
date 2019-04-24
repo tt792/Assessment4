@@ -54,17 +54,19 @@ public class MenuScreen extends DefaultScreen {
 
 		// Creating buttons.
 		TextButton start = new TextButton("Start", skin);
-		TextButton miniGame = new TextButton("Minigame", skin);
+		TextButton miniGame = new TextButton("UCAS mode", skin);
+		TextButton miniGameHelp = new TextButton("i", skin);
 		TextButton exit = new TextButton("Exit", skin);
 
 		// Adding content to the table (screen).
 		table.add(titleLabel);
 		table.row().pad(10, 40, 10, 40);
-		table.add(start).fillX().uniformX();
+		table.add(start).uniformX();
 		table.row().pad(10, 40, 10, 40);
-		table.add(miniGame).fillX().uniformX();
+		table.add(miniGame).uniformX();
+		table.add(miniGameHelp);
 		table.row().pad(10, 40, 10, 40);
-		table.add(exit).fillX().uniformX();
+		table.add(exit).uniformX();
 
 		// Defining actions for the start button.
 		start.addListener(new ChangeListener() {
