@@ -1,6 +1,7 @@
 package com.geeselightning.zepr.entities;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -31,7 +32,16 @@ public class Human extends Character{
 	public float stunTimer;
 	
 	public Human(Zepr parent, float bRadius, Vector2 initialPos, float initialRot) {
-		super(parent, new Sprite(new Texture("player03.png")), bRadius, initialPos, initialRot);
+		super(parent, new Sprite(new Texture("curedzombie01.png")), bRadius, initialPos, initialRot);
+		Random rand = new Random();
+		int num = rand.nextInt(3);
+		if (num == 0) {
+			this.sprite.setTexture(new Texture("curedzombie01.png"));
+		} else if (num == 1) {
+			this.sprite.setTexture(new Texture("curedzombie02.png"));
+		} else {
+			this.sprite.setTexture(new Texture("curedzombie03.png"));
+		}
 		this.speed = (int) speedMulti;
 		this.health = (int) healthMulti;
 		this.attackDamage = (int) damageMulti;
