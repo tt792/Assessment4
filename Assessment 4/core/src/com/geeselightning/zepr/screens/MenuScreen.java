@@ -24,6 +24,7 @@ import com.geeselightning.zepr.game.Zepr;
 public class MenuScreen extends DefaultScreen {
 	private Stage stage;
 	private Label titleLabel;
+	private Label groupLabel;
 
 	public MenuScreen(Zepr parent) {
 		// Constructor builds the gui of the menu screen.
@@ -43,30 +44,33 @@ public class MenuScreen extends DefaultScreen {
 		// table.
 		Table table = new Table();
 		table.setFillParent(true);
-		// table.setDebug(true); // Adds borders for the table.
+		table.setDebug(true); // Adds borders for the table.
 		stage.addActor(table);
 
 		// Importing the necessary assets for the button textures.
 		Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 
 		// Creating a title.
-		titleLabel = new Label("Zombie Engineering Project", skin, "subtitle");
+		titleLabel = new Label("Zombie Engineering Project", skin, "title");
+		titleLabel.setFontScale(0.8f);
+		groupLabel = new Label("Placeholder Games, 2019", skin);
 
 		// Creating buttons.
 		TextButton start = new TextButton("Start", skin);
-		TextButton miniGame = new TextButton("UCAS mode", skin);
-		TextButton miniGameHelp = new TextButton("i", skin);
+		TextButton miniGame = new TextButton("Mini-game", skin);
 		TextButton exit = new TextButton("Exit", skin);
 
 		// Adding content to the table (screen).
-		table.add(titleLabel);
-		table.row().pad(10, 40, 10, 40);
-		table.add(start).uniformX();
-		table.row().pad(10, 40, 10, 40);
-		table.add(miniGame).uniformX();
-		table.add(miniGameHelp);
-		table.row().pad(10, 40, 10, 40);
-		table.add(exit).uniformX();
+		table.add(titleLabel).expandX().padBottom(64);
+		table.row();
+		table.add(start).padTop(16);
+		table.row();
+		table.add(miniGame).padTop(16);
+		table.row();
+		table.add(exit).padTop(16);
+		table.row();
+		table.add(groupLabel).padTop(80);
+		
 
 		// Defining actions for the start button.
 		start.addListener(new ChangeListener() {
