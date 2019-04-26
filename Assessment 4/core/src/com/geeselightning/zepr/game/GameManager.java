@@ -311,6 +311,7 @@ public class GameManager implements Disposable {
 		rayHandler.setAmbientLight(0.7f);
 
 		level = new Level(parent, location);
+		
 		// Loads the level and creates the renderer for the TiledMap.
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(level.load(), 1 / (float) Constant.PPT);
 		tiledMapRenderer.setView(gameCamera);
