@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="92">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="101">
  <properties>
   <property name="levelName" value="Town"/>
  </properties>
@@ -180,68 +180,65 @@
   </object>
  </objectgroup>
  <objectgroup id="4" name="Walls">
-  <object id="52" name="Main Wall" x="2" y="-6" width="1022" height="6"/>
-  <object id="53" name="Main Wall" x="1037" y="1" width="1022" height="6" rotation="90"/>
-  <object id="54" name="Main Wall" x="1" y="-1" width="1022" height="6" rotation="90"/>
   <object id="55" name="Main Wall" x="-1" y="1027" width="1022" height="6"/>
-  <object id="56" name="Tree" x="2.5" y="645.5" width="55" height="61">
+  <object id="56" name="Tree 20" x="2.5" y="645.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="57" name="Tree" x="388.5" y="645.5" width="55" height="61">
+  <object id="57" name="Tree 19" x="388.5" y="645.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="58" name="Tree" x="578.5" y="647.5" width="55" height="61">
+  <object id="58" name="Tree 18" x="578.5" y="647.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="59" name="Tree" x="960.5" y="643.5" width="55" height="61">
+  <object id="59" name="Tree 17" x="960.5" y="643.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="60" name="Tree" x="966.5" y="961.5" width="55" height="61">
+  <object id="60" name="Tree 16" x="966.5" y="961.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="61" name="Tree" x="904.5" y="959.5" width="55" height="61">
+  <object id="61" name="Tree 15" x="904.5" y="959.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="62" name="Tree" x="834.5" y="963.5" width="55" height="61">
+  <object id="62" name="Tree 14" x="834.5" y="963.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="63" name="Tree" x="774.5" y="961.5" width="55" height="61">
+  <object id="63" name="Tree 13" x="774.5" y="961.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="64" name="Tree" x="708.5" y="965.5" width="55" height="61">
+  <object id="64" name="Tree 12" x="708.5" y="965.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="65" name="Tree" x="648.5" y="961.5" width="55" height="61">
+  <object id="65" name="Tree 11" x="648.5" y="961.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="66" name="Tree" x="584.5" y="961.5" width="55" height="61">
+  <object id="66" name="Tree 10" x="584.5" y="961.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="67" name="Tree" x="518.5" y="963.5" width="55" height="61">
+  <object id="67" name="Tree 9" x="518.5" y="963.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="68" name="Tree" x="448.5" y="965.5" width="55" height="61">
+  <object id="68" name="Tree 8" x="448.5" y="965.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="69" name="Tree" x="390.5" y="965.5" width="55" height="61">
+  <object id="69" name="Tree 7" x="390.5" y="965.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="70" name="Tree" x="326.5" y="965.5" width="55" height="61">
+  <object id="70" name="Tree 6" x="326.5" y="965.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="71" name="Tree" x="262.5" y="965.5" width="55" height="61">
+  <object id="71" name="Tree 5" x="262.5" y="965.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="72" name="Tree" x="198.5" y="965.5" width="55" height="61">
+  <object id="72" name="Tree 4" x="198.5" y="965.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="73" name="Tree" x="136.5" y="967.5" width="55" height="61">
+  <object id="73" name="Tree 3" x="136.5" y="967.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="74" name="Tree" x="70.5" y="967.5" width="55" height="61">
+  <object id="74" name="Tree 2" x="70.5" y="967.5" width="55" height="61">
    <ellipse/>
   </object>
-  <object id="75" name="Tree" x="6.5" y="963.5" width="55" height="61">
+  <object id="75" name="Tree 1" x="6.5" y="963.5" width="55" height="61">
    <ellipse/>
   </object>
   <object id="76" name="Car collison 1" x="50.625" y="798.875" width="28.75" height="16.25"/>
@@ -252,7 +249,10 @@
   <object id="81" name="Car collison 6" x="549.625" y="799.875" width="22.25" height="16.25"/>
   <object id="82" name="Car collison 7" x="741.625" y="832.375" width="22.75" height="16.25"/>
   <object id="83" name="Car collison 8" x="870.625" y="794.875" width="19.75" height="19.75"/>
-  <object id="84" name="Shelves" x="575" y="63" width="385" height="64"/>
+  <object id="84" name="Shelves 1" x="575" y="63" width="385" height="64"/>
   <object id="86" name="Shelves" x="64.5" y="63" width="385" height="64"/>
+  <object id="97" name="TopWall" x="-10" y="-14" width="1042" height="20"/>
+  <object id="98" x="1026" y="0" width="8" height="1038"/>
+  <object id="99" x="-10" y="-4" width="8" height="1040"/>
  </objectgroup>
 </map>

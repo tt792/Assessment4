@@ -51,7 +51,7 @@ public class GameManager implements Disposable {
 	
 	public boolean cureFound = false;
 
-	// The preferences file that holds save data.
+	// The preferences file that holds  data.
 	private Preferences prefs;
 
 	// Defines whether the game is currently running.
