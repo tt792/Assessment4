@@ -228,9 +228,9 @@
   <object id="47" name="Car Collision 7" x="992.364" y="106.909" width="17.6364" height="37.0909"/>
   <object id="48" name="Call Collision 8" x="981.167" y="128.167" width="32.3333" height="48.3333"/>
   <object id="49" name="Car Collision 5" x="965.875" y="143.875" width="25.875" height="16"/>
-  <object id="50" name="wall 20" x="-17.5455" y="95.1818" width="30" height="81.1818"/>
+  <object id="50" name="wall 20" x="-17.5455" y="96.1818" width="30" height="81.1818"/>
   <object id="51" name="Building 3" x="654.667" y="928" width="380.667" height="96.6667"/>
   <object id="52" x="979" y="399.75" width="10.5" height="304"/>
-  <object id="53" name="Wall6" x="941.75" y="622" width="21.5" height="18"/>
+  <object id="53" name="Wall6" x="941.75" y="624" width="21.5" height="18"/>
  </objectgroup>
 </map>
