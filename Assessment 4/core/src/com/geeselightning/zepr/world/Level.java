@@ -37,7 +37,7 @@ public class Level {
 		RONCOOKE("Ron Cooke Hub", "roncooke", 5),
 		
 		//Assessment 4: Zombie levels
-		ZOMBIE1("Level 1", "chemisty", 10),
+		ZOMBIE1("Level 1", "chemistry", 10),
 		ZOMBIE2("Level 2", "zombiefight", 11);
 		
 		// Human-readable level name
