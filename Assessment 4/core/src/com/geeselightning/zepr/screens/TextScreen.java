@@ -23,15 +23,12 @@ public class TextScreen extends DefaultScreen {
 
 	private Label titleText;
 	private Label subtitleText;
-	private Zepr parent;
 	private Stage stage;
 	private TextButton button;
 	private Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 
 	public TextScreen(Zepr parent, String title, String subtitle, TextButton button) {
 		super(parent);
-
-		this.parent = parent;
 		
 		titleText = new Label(title, skin, "subtitle");
 		subtitleText = new Label(subtitle, skin);

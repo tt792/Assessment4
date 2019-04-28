@@ -40,7 +40,6 @@ public class ZombieSelectScreen extends DefaultScreen {
 	private TextButton zombieLevel2;
 	
 	private final String zombieLevel1Descriptor = "You have awoken in an unknown location";
-	private final String zombieLevel2Descriptor = "You've managed to reach a second location";
 	
 	private GameManager gameManager;
 
