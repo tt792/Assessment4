@@ -112,8 +112,6 @@ public class GameManager implements Disposable {
 	// All the active power-ups.
 	private ArrayList<PowerUp> powerUps;
 
-	// Random generator for power-up types.
-	private static RandomEnum<PowerUp.Type> randomPowerUpType = new RandomEnum<PowerUp.Type>(PowerUp.Type.class);
 	// Random generator for zombie types.
 	private static RandomEnum<Zombie.Type> randomZombieType = new RandomEnum<Zombie.Type>(Zombie.Type.class);
 
