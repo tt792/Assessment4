@@ -28,7 +28,7 @@ public class Zepr extends Game {
 	private MenuScreen menuScreen;
 	private LoadingScreen loadingScreen;
 	private ZombieSelectScreen zombieSelectScreen;
-	private SelectLevelScreen selectLevelScreen;
+	private SelectCharacterScreen selectLevelScreen;
 	private GameScreen gameScreen;
 	private MiniGameScreen miniGameScreen;
 	
@@ -63,12 +63,12 @@ public class Zepr extends Game {
 		
 		Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 		
-		TextButton back = new TextButton("Back", skin);
+		TextButton nextStage = new TextButton("next stage", skin, "arcade");
 		TextButton zombieLevel = new TextButton("Continue", skin);
 		TextButton zombie2 = new TextButton("Continue", skin);
 		TextButton zombie3 = new TextButton("Continue", skin);
 		
-		back.addListener(new ChangeListener() {
+		nextStage.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				changeScreen(SELECT);
@@ -110,7 +110,7 @@ public class Zepr extends Game {
 				this.setScreen(loadingScreen);
 				break;
 			case SELECT:
-				if (loadingScreen == null) selectLevelScreen = new SelectLevelScreen(this);
+				if (loadingScreen == null) selectLevelScreen = new SelectCharacterScreen(this);
 				this.setScreen(selectLevelScreen);
 				break;
 			case ZOMBIESELECT:
@@ -125,13 +125,13 @@ public class Zepr extends Game {
 				this.setScreen(new TextScreen(this, "You passed out", "You awaken in an unknown location", zombieLevel));
 				break;
 			case ZOMBIE2:
-				this.setScreen(new TextScreen(this, "Level complete", "You have successfully completed the level", zombie2));
+				this.setScreen(new TextScreen(this, "Stage complete", "loading next map...", zombie2));
 				break;
 			case ZOMBIE3:
-				this.setScreen(new TextScreen(this, "You have cured yourself", "Having successfully found a cure you have become human again", zombie3));
+				this.setScreen(new TextScreen(this, "You are cured", "You are now a human again", zombie3));
 				break;
 			case LEVEL_COMPLETE:
-				this.setScreen(new TextScreen(this, "Level complete", "You have successfully completed the level", back));
+				this.setScreen(new TextScreen(this, "Stage " + SelectCharacterScreen.getStageName() + " complete!", "loading next map...", nextStage));
 				break;
 			case MINIGAME:
 				if (miniGameScreen == null) miniGameScreen = new MiniGameScreen(this);

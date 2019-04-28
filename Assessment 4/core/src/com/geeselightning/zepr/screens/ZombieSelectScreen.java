@@ -61,9 +61,9 @@ public class ZombieSelectScreen extends DefaultScreen {
 		Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 
 		/* Top menu bar buttons */
-		TextButton save = new TextButton("Save", skin);
-		TextButton load = new TextButton("Load", skin);
-		TextButton back = new TextButton("Back", skin);
+		TextButton save = new TextButton("save", skin);
+		TextButton load = new TextButton("load", skin);
+		TextButton back = new TextButton("<-", skin);
 		
 		/* Level selection buttons */
 		zombieLevel1 = new TextButton("Level 1", skin);
@@ -76,7 +76,7 @@ public class ZombieSelectScreen extends DefaultScreen {
 		TextButton play = new TextButton("Play", skin);
 
 		/* Level descriptions */
-		Label title = new Label("Choose a stage and character.", skin, "subtitle");
+		Label title = new Label("Choose a zombie:", skin, "subtitle");
 		//final String lockedDescription = "This stage is locked until you complete the previous one.";
 		final String defaultDescription = "Select a stage from the buttons above.";
 		stageDescription = new Label(defaultDescription, skin);

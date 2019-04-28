@@ -30,7 +30,7 @@ public class TextScreen extends DefaultScreen {
 	public TextScreen(Zepr parent, String title, String subtitle, TextButton button) {
 		super(parent);
 		
-		titleText = new Label(title, skin);
+		titleText = new Label(title, skin, "subtitle");
 		subtitleText = new Label(subtitle, skin);
 		this.button = button;
 

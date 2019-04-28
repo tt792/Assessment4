@@ -56,7 +56,7 @@ public class MenuScreen extends DefaultScreen {
 		groupLabel = new Label("Placeholder Games, 2019", skin);
 
 		// Creating buttons.
-		TextButton start = new TextButton("Start", skin);
+		TextButton start = new TextButton("Play", skin);
 		TextButton miniGame = new TextButton("Mini-game", skin);
 		TextButton exit = new TextButton("Exit", skin);
 
