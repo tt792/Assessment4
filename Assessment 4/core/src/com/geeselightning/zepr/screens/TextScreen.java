@@ -33,7 +33,7 @@ public class TextScreen extends DefaultScreen {
 
 		this.parent = parent;
 		
-		titleText = new Label(title, skin);
+		titleText = new Label(title, skin, "subtitle");
 		subtitleText = new Label(subtitle, skin);
 		this.button = button;
 

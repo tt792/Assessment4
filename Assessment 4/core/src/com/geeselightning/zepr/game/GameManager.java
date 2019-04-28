@@ -51,7 +51,7 @@ public class GameManager implements Disposable {
 	
 	public boolean cureFound = false;
 
-	// The preferences file that holds save data.
+	// The preferences file that holds  data.
 	private Preferences prefs;
 
 	// Defines whether the game is currently running.
@@ -311,6 +311,7 @@ public class GameManager implements Disposable {
 		rayHandler.setAmbientLight(0.7f);
 
 		level = new Level(parent, location);
+		
 		// Loads the level and creates the renderer for the TiledMap.
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(level.load(), 1 / (float) Constant.PPT);
 		tiledMapRenderer.setView(gameCamera);
@@ -382,10 +383,7 @@ public class GameManager implements Disposable {
 		default:
 			break;
 		}
-<<<<<<< HEAD
-=======
 		*/
->>>>>>> parent of bfac931... tom told me to push..
 		hud.setProgressLabel(waveProgress + 1, zombiesToSpawn);
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
@@ -487,6 +485,7 @@ public class GameManager implements Disposable {
 	public void levelComplete() {
 		if (location.getNum() + 1 > levelProgress) {
 			levelProgress += 1;
+			System.out.println("-------------- level progress: " + levelProgress);
 		}
 		levelLoaded = false;
 		gameRunning = false;
