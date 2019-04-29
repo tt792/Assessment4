@@ -106,7 +106,7 @@ public class ZombieSelectScreen extends DefaultScreen {
 		// Adding stage selector buttons.
 		Table stageSelect = new Table();
 		stageSelect.setFillParent(true);
-		stageSelect.setDebug(true); // Adds borders for the table.
+		//stageSelect.setDebug(true); // Adds borders for the table.
 		stage.addActor(stageSelect);
 
 		stageSelect.center();

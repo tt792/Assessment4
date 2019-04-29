@@ -361,7 +361,7 @@ public class GameManager implements Disposable {
 		boolean spawnBoss = false;
 		activeBoss = false;
 		List<Vector2> zombieSpawns = level.getZombieSpawns();
-		zombiesToSpawn = 0;
+		zombiesToSpawn = 1;
 
 		/*
 		switch (getWave(this.location, waveProgress)) {

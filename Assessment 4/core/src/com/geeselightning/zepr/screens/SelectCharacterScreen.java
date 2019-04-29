@@ -129,7 +129,7 @@ public class SelectCharacterScreen extends DefaultScreen {
 		// Adding play button at the bottom.
 		Table bottomTable = new Table();
 		bottomTable.setFillParent(true);
-		// bottomTable.setDebug(true); // Adds borders for the table.
+		//bottomTable.setDebug(true); // Adds borders for the table.
 		stage.addActor(bottomTable);
 
 		bottomTable.bottom();
@@ -251,7 +251,7 @@ public class SelectCharacterScreen extends DefaultScreen {
 		} 
 		else if (gameManager.getLevelProgress() == 1) {
 			gameManager.setLocation(Level.Location.HALIFAX);
-			stageName = "2: Halifax College";
+			stageName = "2: Halifax";
 			currentStageLabel.setText("Stage " + stageName);
 			currentStageLabel.setColor(Color.CYAN);
 		}

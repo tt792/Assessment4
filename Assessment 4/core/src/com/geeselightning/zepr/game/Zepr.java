@@ -49,7 +49,7 @@ public class Zepr extends Game {
 	// Assessment 3: added dev mode
 	public Zepr(boolean devMode) {
 		super();
-		Zepr.devMode = false;
+		Zepr.devMode = true;
 	}
 
 	/**

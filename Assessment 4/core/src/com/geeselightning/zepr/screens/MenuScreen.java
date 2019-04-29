@@ -45,7 +45,7 @@ public class MenuScreen extends DefaultScreen {
 		// table.
 		Table table = new Table();
 		table.setFillParent(true);
-		table.setDebug(true); // Adds borders for the table.
+		//table.setDebug(true); // Adds borders for the table.
 		stage.addActor(table);
 
 		// Importing the necessary assets for the button textures.
