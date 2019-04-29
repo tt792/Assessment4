@@ -59,7 +59,7 @@ public class MenuScreen extends DefaultScreen {
 
 		// Creating buttons.
 		TextButton start = new TextButton("Play", skin);
-		TextButton miniGame = new TextButton("Mini-game", skin);
+		TextButton miniGame = new TextButton("UCAS Mode", skin);
 		TextButton exit = new TextButton("Exit", skin);
 
 		// Adding content to the table (screen).
