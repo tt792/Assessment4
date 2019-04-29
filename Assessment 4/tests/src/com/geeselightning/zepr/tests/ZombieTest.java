@@ -22,18 +22,21 @@ public class ZombieTest {
 	}
 	
 	@Test
+	//W3.1
 	public void zombieSpeedHierarchy() {
 		assertTrue("Slow zombie should be slower than medium, and medium should be slower than fast.",
 				(fast.getSpeed() > medium.getSpeed() && (medium.getSpeed() ) > slow.getSpeed()));
 	}
 	
 	@Test
+	//W3.2
 	public void zombieHealthHierarchy() {
 		assertTrue("Slow zombie should have more health than medium, who should have more than fast.",
 				(slow.getHealth() > medium.getHealth()) && (medium.getHealth() > fast.getHealth()));
 	}
 	
 	@Test
+	//W3.3
 	public void zombieDamageHierarchy() {
 		assertTrue("Medium zombie should deal more damage than fast and slow zombies",
 				(medium.getAttackDamage() > slow.getAttackDamage()) 
