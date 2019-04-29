@@ -361,26 +361,25 @@ public class GameManager implements Disposable {
 		boolean spawnBoss = false;
 		activeBoss = false;
 		List<Vector2> zombieSpawns = level.getZombieSpawns();
-		zombiesToSpawn = 1;
 
-//		switch (getWave(this.location, waveProgress)) {
-//		case LARGE:
-//			zombiesToSpawn = 4 * zombieSpawns.size();
-//			break;
-//		case MEDIUM:
-//			zombiesToSpawn = 3 * zombieSpawns.size();
-//			break;
-//		case SMALL:
-//			zombiesToSpawn = 2 * zombieSpawns.size();
-//			break;
-//		case MINIBOSS:
-//		case BOSS:
-//			zombiesToSpawn = 3 * zombieSpawns.size();
-//			spawnBoss = true;
-//			break;
-//		default:
-//			break;
-//		}
+		switch (getWave(this.location, waveProgress)) {
+		case LARGE:
+			zombiesToSpawn = 4 * zombieSpawns.size();
+			break;
+		case MEDIUM:
+			zombiesToSpawn = 3 * zombieSpawns.size();
+			break;
+		case SMALL:
+			zombiesToSpawn = 2 * zombieSpawns.size();
+			break;
+		case MINIBOSS:
+		case BOSS:
+			zombiesToSpawn = 3 * zombieSpawns.size();
+			spawnBoss = true;
+			break;
+		default:
+			break;
+		}
 				
 		hud.setProgressLabel(waveProgress + 1, zombiesToSpawn);
 		spawnCooldown = 0;
