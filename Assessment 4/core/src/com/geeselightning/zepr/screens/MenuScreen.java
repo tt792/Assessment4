@@ -1,6 +1,7 @@
 package com.geeselightning.zepr.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -52,6 +53,7 @@ public class MenuScreen extends DefaultScreen {
 
 		// Creating a title.
 		titleLabel = new Label("Zombie Engineering Project", skin, "title");
+		titleLabel.setColor(Color.GOLD);
 		titleLabel.setFontScale(0.8f);
 		groupLabel = new Label("Placeholder Games, 2019", skin);
 

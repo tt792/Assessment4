@@ -2,6 +2,7 @@ package com.geeselightning.zepr.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -55,15 +56,18 @@ public class MiniGameScreen extends DefaultScreen {
 			Gdx.input.setInputProcessor(this.miniGame.miniGameController);
 			//Positions UI
 			Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
-			scoreLabel = new Label("Score : ", skin);
-			scoreLabel.setPosition(-600, 300);
-			scoreLabel.toFront();
-			ammoLabel = new Label("Ammo : ", skin);
-			ammoLabel.setPosition(-600, 250);
-			ammoLabel.toFront();
-			waveLabel = new Label("Round : ",skin);
-			waveLabel.setPosition(-600, 200);
+			waveLabel = new Label("Round : ",skin, "subtitle");
+			waveLabel.setPosition(-600, 300);
 			waveLabel.toFront();
+			scoreLabel = new Label("Score : ", skin);
+			scoreLabel.setPosition(-600, 225);
+			scoreLabel.toFront();
+			scoreLabel.setColor(Color.BLUE);
+			ammoLabel = new Label("Ammo : ", skin);
+			ammoLabel.setPosition(-600, 175);
+			ammoLabel.toFront();
+			ammoLabel.setColor(Color.BLUE);
+
 		}
 
 		@Override

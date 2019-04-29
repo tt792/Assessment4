@@ -93,20 +93,20 @@ public class ZombieSelectScreen extends DefaultScreen {
 		characterDescription.setAlignment(Align.center);
 
 		// Adding menu bar.
-		Table menuBar = new Table();
-		menuBar.setFillParent(true);
+		Table backSaveLoad = new Table();
+		backSaveLoad.setFillParent(true);
 		// menuBar.setDebug(true); // Adds borders for the table.
-		stage.addActor(menuBar);
+		stage.addActor(backSaveLoad);
 
-		menuBar.top().left();
-		menuBar.row();
-		menuBar.add(back).pad(10);
-		menuBar.add(save).pad(10);
-		menuBar.add(load).pad(10);
+		backSaveLoad.top();
+		backSaveLoad.row();
+		backSaveLoad.add(back).padRight(800).padTop(10);
+		backSaveLoad.add(save).padRight(10).padTop(10);
+		backSaveLoad.add(load).padTop(10);
 		// Adding stage selector buttons.
 		Table stageSelect = new Table();
 		stageSelect.setFillParent(true);
-		// stageSelect.setDebug(true); // Adds borders for the table.
+		stageSelect.setDebug(true); // Adds borders for the table.
 		stage.addActor(stageSelect);
 
 		stageSelect.center();

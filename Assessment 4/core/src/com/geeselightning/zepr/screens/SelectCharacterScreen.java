@@ -39,9 +39,14 @@ public class SelectCharacterScreen extends DefaultScreen {
 	
 	Label currentStageLabel = new Label("Stage " + stageName, skin, "title");
 	
+	/* Character selection buttons */
 	TextButton nerdy = new TextButton("Nerdy", skin);
 	TextButton sporty = new TextButton("Sporty", skin);
 	TextButton heavy = new TextButton("Heavy", skin);
+	
+	
+	/* Start the game button */
+	TextButton play = new TextButton("Start game!", skin, "arcade");
 	
 	// Defines whether a level has been selected
 	// Defines whether a player class has been selected
@@ -71,29 +76,6 @@ public class SelectCharacterScreen extends DefaultScreen {
 		TextButton load = new TextButton("load", skin);
 		TextButton back = new TextButton("<-", skin);
 		
-		/* Level selection buttons */
-		
-		/*
-		
-		town = new TextButton("Town", skin);
-		halifax = new TextButton("Halifax", skin);
-		centralHall = new TextButton("Central Hall", skin);
-		courtyard = new TextButton("Courtyard", skin);
-		library = new TextButton("Library", skin);
-		ronCooke = new TextButton("Ron Cooke", skin);
-		
-		*/
-
-		/* Character selection buttons */
-		
-
-		/* Play button */
-		TextButton play = new TextButton("Start game!", skin, "arcade");
-
-		/* Level descriptions */
-		
-		//final String lockedDescription = "This stage is locked until you complete the previous one.";
-
 		/* Character descriptions */
 		final String nerdyDescription = "I'm so smart I built myself a protective suit";
 		final String sportyDescripton = "I run super fast. That's kind of it though.";
@@ -116,37 +98,24 @@ public class SelectCharacterScreen extends DefaultScreen {
 		backSaveLoad.add(save).padRight(10).padTop(10);
 		backSaveLoad.add(load).padTop(10);
 		
-		
-		/* Adding character selector buttons and NOT "stage" selector buttons
-		   BECAUSE WE'RE SMART ENOUGH TO CODE AUTOMATIC STAGE CHOOSING OK?!
-		   WHY WOULD YOU WANNA DO THE SAME LEVEL TWICE ANYWAY
-		*/
-		
 		Table characterSelect = new Table();
 		characterSelect.setFillParent(true);
 		// characterSelect.setDebug(true); // Adds borders for the table.
 		stage.addActor(characterSelect);
 
+		/* Adding character selector buttons and NOT "level" selector buttons
+		   BECAUSE WE'RE SMART ENOUGH TO CODE AUTOMATIC STAGE CHOOSING OK?!
+		   WHY WOULD YOU WANNA DO THE SAME LEVEL TWICE ANYWAY
+		*/
+		
 		characterSelect.center();
+		
+		/* Stage number label */
 		characterSelect.add(currentStageLabel).colspan(3).padBottom(10);
 		characterSelect.row();
 		characterSelect.add(characterDescription).width(1000f).colspan(3);
-		
-		/*
-
-		characterSelect.row().pad(50, 0, 100, 0);
-		characterSelect.add(town).pad(10);
-		characterSelect.add(halifax).pad(10);
-		characterSelect.add(centralHall).pad(10).row();
-		characterSelect.add(courtyard).pad(10);
-		characterSelect.add(library).pad(10);
-		characterSelect.add(ronCooke).pad(10);
-		
-		*/
-
 		characterSelect.row();
-
-		// Adding select character Buttons
+		
 		characterSelect.row().center();
 		characterSelect.add(nerdy).pad(10);
 		nerdy.setColor(Color.BLACK);
@@ -165,10 +134,6 @@ public class SelectCharacterScreen extends DefaultScreen {
 
 		bottomTable.bottom();
 		bottomTable.add(play).pad(10).center();
-
-		/**
-		 * Button event listeners
-		 */
 		
 		/**
 		 * Defines action for the save button.
@@ -216,11 +181,12 @@ public class SelectCharacterScreen extends DefaultScreen {
 				characterDescription.setText(nerdyDescription);
 				gameManager.setPlayerType(Player.Type.NERDY);
 				playerSet = true;
-				nerdy.setColor(Color.WHITE);
+				nerdy.setColor(Color.YELLOW);
 				sporty.setColor(Color.BLACK);
 				heavy.setColor(Color.BLACK);
 			}
 		});
+		
 		/**
 		 * Defines action for the sporty character selection button.
 		 */
@@ -231,10 +197,11 @@ public class SelectCharacterScreen extends DefaultScreen {
 				gameManager.setPlayerType(Player.Type.SPORTY);
 				playerSet = true;
 				nerdy.setColor(Color.BLACK);
-				sporty.setColor(Color.WHITE);
+				sporty.setColor(Color.YELLOW);
 				heavy.setColor(Color.BLACK);
 			}
 		});
+		
 		/**
 		 * Defines action for the heavy character selection button.
 		 */
@@ -246,7 +213,7 @@ public class SelectCharacterScreen extends DefaultScreen {
 				playerSet = true;
 				nerdy.setColor(Color.BLACK);
 				sporty.setColor(Color.BLACK);
-				heavy.setColor(Color.WHITE);
+				heavy.setColor(Color.YELLOW);
 			}
 		});
 
@@ -259,9 +226,6 @@ public class SelectCharacterScreen extends DefaultScreen {
 				if (playerSet) {
 					parent.changeScreen(Zepr.GAME);
 				}
-				if (gameManager.getLevelProgress() > 5) {
-					
-				}
 			}
 		});
 		
@@ -270,16 +234,12 @@ public class SelectCharacterScreen extends DefaultScreen {
 	}
 	
 	/**
-	 * Enables/disables level selection buttons depending on whether the user has unlocked it.
+	 * Updates the text for what stage the player is on, as the player progresses the game
 	 * Assessment 3: moved the following code from the show method so that it can
-	 * be called independently to allow dynamic button enabling/disabling (mainly for loading
+	 * be called independently to allow dynamic string updating (mainly for loading
 	 * functionality).
 	 * @return 
 	 */
-	
-	public static char getStageName() {
-		return stageName.charAt(0);
-	}
 	
 	private void setLevelSelectionHandlers() {
 		/**
@@ -293,26 +253,31 @@ public class SelectCharacterScreen extends DefaultScreen {
 			gameManager.setLocation(Level.Location.HALIFAX);
 			stageName = "2: Halifax College";
 			currentStageLabel.setText("Stage " + stageName);
+			currentStageLabel.setColor(Color.CYAN);
 		}
 		else if (gameManager.getLevelProgress() == 2) {
 			gameManager.setLocation(Level.Location.CENTRALHALL);
 			stageName = "3: Central Hall";
 			currentStageLabel.setText("Stage " + stageName);
+			currentStageLabel.setColor(Color.SALMON);
 			}
 		else if (gameManager.getLevelProgress() == 3) {
 			gameManager.setLocation(Level.Location.COURTYARD);
 			stageName = "4: Courtyard";
 			currentStageLabel.setText("Stage " + stageName);
+			currentStageLabel.setColor(Color.BROWN);
 			}
 		else if (gameManager.getLevelProgress() == 4) {
 			gameManager.setLocation(Level.Location.LIBRARY);
 			stageName = "5: JB Morrell";
 			currentStageLabel.setText("Stage " + stageName);
+			currentStageLabel.setColor(Color.SLATE);
 			}
 		else if (gameManager.getLevelProgress() == 5) {
 			gameManager.setLocation(Level.Location.RONCOOKE);
-			stageName = "6: Ron Cooke Hub";
-			currentStageLabel.setText("Stage " + stageName);
+			stageName = "Ron Cooke Hub";
+			currentStageLabel.setText("Final Stage" + stageName);
+			currentStageLabel.setColor(Color.GOLD);
 			}
 		else if (gameManager.getLevelProgress() > 5) {
 			currentStageLabel.setText("Congratulations!");
@@ -320,78 +285,18 @@ public class SelectCharacterScreen extends DefaultScreen {
 			nerdy.remove();
 			heavy.remove();
 			sporty.remove();
-		}
-		
-		
-		
-//		/**
-//		 * Defines action for the courtyard level selection button.
-//		 */
-//		if (gameManager.getLevelProgress() < 3) {
-//			disabledButtonStyle(courtyard);
-//		} else {
-//			enabledButtonStyle(courtyard);
-//			// Defining actions for the courtyard button.
-//			courtyard.addListener(new ChangeListener() {
-//				@Override
-//				public void changed(ChangeEvent event, Actor actor) {
-//					gameManager.setLocation(Level.Location.COURTYARD);
-//
-//				}
-//			});
-//		}
-//		
-//		/**
-//		 * Defines action for the library level selection button.
-//		 */
-//		if (gameManager.getLevelProgress() < 4) {
-//			disabledButtonStyle(library);
-//		} else {
-//			enabledButtonStyle(library);
-//			library.addListener(new ChangeListener() {
-//				@Override
-//				public void changed(ChangeEvent event, Actor actor) {
-//					gameManager.setLocation(Level.Location.LIBRARY);
-//				}
-//			});
-//		}
-//		
-//		/**
-//		 * Defines action for the Ron Cooke level selection button.
-//		 */
-//		if (gameManager.getLevelProgress() < 5) {
-//			disabledButtonStyle(ronCooke);
-//		} else {
-//			enabledButtonStyle(ronCooke);
-//			ronCooke.addListener(new ChangeListener() {
-//				@Override
-//				public void changed(ChangeEvent event, Actor actor) {
-//					gameManager.setLocation(Level.Location.RONCOOKE);
-//				}
-//			};
-//		}
-//		
-//		
+			play.remove();
+		}		
 		 
 	}
 	
-	
-	// Assessment 3: convenience method to set a button to the disabled style.
-	private void disabledButtonStyle(TextButton button) {
-		button.setColor(Color.DARK_GRAY);
-		button.getLabel().setColor(Color.DARK_GRAY);
+	/* Assessment 4: convenience method(?), returns which stage the user completes
+	 * to update the "you have completed a stage!" screen
+	 */
+	public static char getStageName() {
+		return stageName.charAt(0);
 	}
 	
-	/*
-	// Assessment 3: convenience method to set a button to the enabled style.
-	private void enabledButtonStyle(TextButton button) {
-		button.setColor(Color.WHITE);
-		button.getLabel().setColor(Color.WHITE);
-	}
-	
-	*/
-	
-
 	@Override
 	public void render(float delta) {
 		super.render(delta);
@@ -406,7 +311,7 @@ public class SelectCharacterScreen extends DefaultScreen {
 		// Update the screen when the window resolution is changed.
 		this.stage.getViewport().update(width, height, true);
 	}
-
+	
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
@@ -421,7 +326,7 @@ public class SelectCharacterScreen extends DefaultScreen {
 	public void hide() {
 		// TODO Auto-generated method stub
 	}
-
+	
 	@Override
 	public void dispose() {
 		// Dispose of assets when they are no longer needed.

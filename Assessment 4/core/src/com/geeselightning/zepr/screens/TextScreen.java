@@ -51,12 +51,14 @@ public class TextScreen extends DefaultScreen {
 		stage.addActor(table);
 		table.center();
 		
+		
 		// Adding content to the table (screen).
 		table.add(titleText);
 		table.row().pad(30);
 		table.add(subtitleText).row();
 		table.add(button);
 	}
+
 
 	@Override
 	public void render(float delta) {
