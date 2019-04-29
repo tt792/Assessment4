@@ -21,7 +21,7 @@ public final class Constant {
 	public static final Vector2 ORIGIN = new Vector2(0, 0);
 	public static final float PLAYERSPEED = 6;
 	public static final int PLAYERMAXHP = 100;
-	public static final int PLAYERDMG = 100000;//20;
+	public static final int PLAYERDMG = 20;
 	public static final int PLAYERRANGE = 50;
 	public static final float PLAYERHITCOOLDOWN = 0.2f;
 	
@@ -42,7 +42,7 @@ public final class Constant {
 	public static final float HUMANSPEED = 3;
 	public static final float HUMANHITCOOLDOWN = 1;
 	public static final int HUMANRANGE = 20;
-	public static final int HUMANSTOSPAWN = 20;
+	public static final int HUMANSTOSPAWN = 3;
 
 	public static final float SLOWSPEEDMULT = 0.5f;
 	public static final float SLOWHPMULT = 2f;

@@ -114,6 +114,9 @@ public class GameManager implements Disposable {
 
 	// Random generator for zombie types.
 	private static RandomEnum<Zombie.Type> randomZombieType = new RandomEnum<Zombie.Type>(Zombie.Type.class);
+	
+	// Random generator for power-up types.
+	private static RandomEnum<PowerUp.Type> randomPowerUpType = new RandomEnum<PowerUp.Type>(PowerUp.Type.class);
 
 	private GameManager(Zepr parent) {
 		this.parent = parent;
@@ -340,6 +343,15 @@ public class GameManager implements Disposable {
 
 		loadWave();
 
+		//Assessment 4 Added human spawning at the start of a level
+		if(levelProgress < 9) {
+			for (int i = 0; i < Constant.HUMANSTOSPAWN; i++) {
+				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0); //create the human at the same place as the player
+				human.defineBody();
+				addHuman(human);
+			}
+		}
+		
 		System.out.println("Finished level loading");
 	}
 
@@ -385,17 +397,8 @@ public class GameManager implements Disposable {
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
 		
-		//Assessment 4 Added human spawning at the start of a level
-		if(levelProgress < 9) {
-			for (int i = 0; i < Constant.HUMANSTOSPAWN; i++) {
-				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0); //create the human at the same place as the player
-				human.defineBody();
-				addHuman(human);
-			}
-		}
-		
 		if (waveProgress > 0) {
-			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, /*randomPowerUpType.getRandom()*/PowerUp.Type.CURE);
+			PowerUp powerUp = new PowerUp(parent, 0.2f, level.getPlayerSpawn(), 0, randomPowerUpType.getRandom());
 			powerUp.defineBody();
 			addPowerUp(powerUp);
 		}
