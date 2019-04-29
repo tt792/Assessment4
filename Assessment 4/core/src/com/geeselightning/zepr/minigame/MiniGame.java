@@ -67,7 +67,7 @@ public class MiniGame {
 				this.goose.update(delta);
 				
 			} else {
-				nextWave();
+				failedWave();
 			}
 			//Changing direction randomly
 			if (rand.nextInt(100) > 90) {
@@ -76,7 +76,7 @@ public class MiniGame {
 			// if any goose has 'escaped'
 			goose.update(delta);
 			if ( goose.currentPos.y > 360) {
-				nextWave();
+				failedWave();
 			}else {
 				//On Click and click has been buffered
 				if (Gdx.input.justTouched() && timeSinceLastClick > 0.009) {
@@ -115,6 +115,19 @@ public class MiniGame {
 		} else {
 			this.goose = new Goose(0.8f);
 		}
+	}
+	
+	/**
+	 * Restarts if you balls up
+	 */
+	private void failedWave() {
+		this.startTime = System.currentTimeMillis();
+		active = false;
+		ammo = 3;
+		wave = 1;
+		score = 0;
+		this.timeSinceLastClick = 0;
+		active = true;
 	}
 	
 }
