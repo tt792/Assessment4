@@ -42,6 +42,7 @@ public final class Constant {
 	public static final float HUMANSPEED = 3;
 	public static final float HUMANHITCOOLDOWN = 1;
 	public static final int HUMANRANGE = 20;
+	public static final int HUMANSTOSPAWN = 20;
 
 	public static final float SLOWSPEEDMULT = 0.5f;
 	public static final float SLOWHPMULT = 2f;

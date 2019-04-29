@@ -169,9 +169,11 @@ public class Zombie extends Character {
 		}
 		stunTimer = 0.5f;
 		
+	
 		if (health - damage >= 0) {
     		health -= damage;
     	} else {
+    		System.out.println("DEAD");
     		health = 0;
     		this.alive = false;
     	}

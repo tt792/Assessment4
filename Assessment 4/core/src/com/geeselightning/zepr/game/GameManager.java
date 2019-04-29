@@ -363,34 +363,32 @@ public class GameManager implements Disposable {
 		List<Vector2> zombieSpawns = level.getZombieSpawns();
 		zombiesToSpawn = 1;
 
-		/*
-		switch (getWave(this.location, waveProgress)) {
-		case LARGE:
-			zombiesToSpawn = 4 * zombieSpawns.size();
-			break;
-		case MEDIUM:
-			zombiesToSpawn = 3 * zombieSpawns.size();
-			break;
-		case SMALL:
-			zombiesToSpawn = 2 * zombieSpawns.size();
-			break;
-		case MINIBOSS:
-		case BOSS:
-			zombiesToSpawn = 3 * zombieSpawns.size();
-			spawnBoss = true;
-			break;
-		default:
-			break;
-		}
-		*/
-		
+//		switch (getWave(this.location, waveProgress)) {
+//		case LARGE:
+//			zombiesToSpawn = 4 * zombieSpawns.size();
+//			break;
+//		case MEDIUM:
+//			zombiesToSpawn = 3 * zombieSpawns.size();
+//			break;
+//		case SMALL:
+//			zombiesToSpawn = 2 * zombieSpawns.size();
+//			break;
+//		case MINIBOSS:
+//		case BOSS:
+//			zombiesToSpawn = 3 * zombieSpawns.size();
+//			spawnBoss = true;
+//			break;
+//		default:
+//			break;
+//		}
+				
 		hud.setProgressLabel(waveProgress + 1, zombiesToSpawn);
 		spawnCooldown = 0;
 		System.out.println("Zombies to spawn: " + zombiesToSpawn);
 		
 		//Assessment 4 Added human spawning at the start of a level
 		if(levelProgress < 9) {
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < Constant.HUMANSTOSPAWN; i++) {
 				Human human = new Human(parent, 0.3f, level.getPlayerSpawn(), 0); //create the human at the same place as the player
 				human.defineBody();
 				addHuman(human);
@@ -604,6 +602,8 @@ public class GameManager implements Disposable {
 	 * (F13) Implements the cure 'curing' zombies in an area around the player
 	 */
 	public void cure() {
+		player.hasCure = false;
+		
 		for (Iterator<Zombie> zl = getZombies().iterator(); zl.hasNext(); ) { //loops through each zombie
 			Zombie zombie = zl.next();
 			double distance = player.distanceFrom(zombie);
