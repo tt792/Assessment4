@@ -57,6 +57,7 @@ public class Player extends Character {
 		}
 	}
 
+	// Assessment 4: Variables for turning into a zombie and back to human
 	public int levelToReturn;
 	public boolean beenZombie;
 	public boolean hasCure;

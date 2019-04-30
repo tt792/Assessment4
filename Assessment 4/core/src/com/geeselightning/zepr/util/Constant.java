@@ -39,7 +39,7 @@ public final class Constant {
 	//Assessment 4: Added constants for human objects
 	public static final int HUMANMAXHP = 100;
 	public static final int HUMANDMG = 10;
-	public static final float HUMANSPEED = 3;
+	public static final float HUMANSPEED = 1;
 	public static final float HUMANHITCOOLDOWN = 1;
 	public static final int HUMANRANGE = 20;
 	public static final int HUMANSTOSPAWN = 3;

@@ -46,9 +46,11 @@ import box2dLight.RayHandler;
 public class GameManager implements Disposable {
 
 	private final Zepr parent;
+	
 	// The instance of GameManager used by the game.
 	public static GameManager instance;
 	
+	// Assessment 4: If the player has found the story cure
 	public boolean cureFound = false;
 
 	// The preferences file that holds  data.
